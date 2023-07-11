@@ -1,4 +1,4 @@
-name: config
+name: maintenance_config
 description: Dart starter for Appwrite function.
 version: 1.0.0
 publish_to: 'none'

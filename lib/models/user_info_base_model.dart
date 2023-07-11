@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:config/models/user_role_wo_user_info_model.dart';
+import 'package:maintenance_config/models/user_role_wo_user_info_model.dart';
 
 class UserInfoBase {
   String id;
