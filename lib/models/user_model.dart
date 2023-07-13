@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:maintenance_config/models/user_info_base_model.dart';
 
+
 class UserModel {
   String userDn;
   String email;

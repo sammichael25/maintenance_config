@@ -3,6 +3,8 @@ import 'dart:convert';
 
 import 'package:maintenance_config/models/user_role_wo_user_info_model.dart';
 
+
+
 class UserInfoBase {
   String id;
   String workstationIp;
