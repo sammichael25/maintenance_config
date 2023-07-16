@@ -33,6 +33,10 @@ class Configs {
   String functionAPIKey;
   String databaseId;
   String loggingDatabaseId;
+  String appImagesBucketId;
+  String loginImageId;
+  String republicLogoFull;
+  String republicLogoSmall;
   String serversCollectionId;
   String checklistCollectionId;
   String disksCollectionId;
@@ -52,6 +56,9 @@ class Configs {
   String applicationInfoDocId;
   String onUserCreatedfunctionId;
   String sendEmailVerificationfunctionId;
+  String loginFunctionId;
+  String getUserFunctionId;
+  String getUserEmailFunctionId;
   String superAdminUserId;
   String superAdminUserEmail;
   String superAdminRole;
@@ -70,6 +77,10 @@ class Configs {
     required this.functionAPIKey,
     required this.databaseId,
     required this.loggingDatabaseId,
+    required this.appImagesBucketId,
+    required this.loginImageId,
+    required this.republicLogoFull,
+    required this.republicLogoSmall,
     required this.serversCollectionId,
     required this.checklistCollectionId,
     required this.disksCollectionId,
@@ -89,6 +100,9 @@ class Configs {
     required this.applicationInfoDocId,
     required this.onUserCreatedfunctionId,
     required this.sendEmailVerificationfunctionId,
+    required this.loginFunctionId,
+    required this.getUserFunctionId,
+    required this.getUserEmailFunctionId,
     required this.superAdminUserId,
     required this.superAdminUserEmail,
     required this.superAdminRole,
@@ -108,6 +122,10 @@ class Configs {
     String? functionAPIKey,
     String? databaseId,
     String? loggingDatabaseId,
+    String? appImagesBucketId,
+    String? loginImageId,
+    String? republicLogoFull,
+    String? republicLogoSmall,
     String? serversCollectionId,
     String? checklistCollectionId,
     String? disksCollectionId,
@@ -127,6 +145,9 @@ class Configs {
     String? applicationInfoDocId,
     String? onUserCreatedfunctionId,
     String? sendEmailVerificationfunctionId,
+    String? loginFunctionId,
+    String? getUserFunctionId,
+    String? getUserEmailFunctionId,
     String? superAdminUserId,
     String? superAdminUserEmail,
     String? superAdminRole,
@@ -145,6 +166,10 @@ class Configs {
       functionAPIKey: functionAPIKey ?? this.functionAPIKey,
       databaseId: databaseId ?? this.databaseId,
       loggingDatabaseId: loggingDatabaseId ?? this.loggingDatabaseId,
+      appImagesBucketId: appImagesBucketId ?? this.appImagesBucketId,
+      loginImageId: loginImageId ?? this.loginImageId,
+      republicLogoFull: republicLogoFull ?? this.republicLogoFull,
+      republicLogoSmall: republicLogoSmall ?? this.republicLogoSmall,
       serversCollectionId: serversCollectionId ?? this.serversCollectionId,
       checklistCollectionId: checklistCollectionId ?? this.checklistCollectionId,
       disksCollectionId: disksCollectionId ?? this.disksCollectionId,
@@ -164,6 +189,9 @@ class Configs {
       applicationInfoDocId: applicationInfoDocId ?? this.applicationInfoDocId,
       onUserCreatedfunctionId: onUserCreatedfunctionId ?? this.onUserCreatedfunctionId,
       sendEmailVerificationfunctionId: sendEmailVerificationfunctionId ?? this.sendEmailVerificationfunctionId,
+      loginFunctionId: loginFunctionId ?? this.loginFunctionId,
+      getUserFunctionId: getUserFunctionId ?? this.getUserFunctionId,
+      getUserEmailFunctionId: getUserEmailFunctionId ?? this.getUserEmailFunctionId,
       superAdminUserId: superAdminUserId ?? this.superAdminUserId,
       superAdminUserEmail: superAdminUserEmail ?? this.superAdminUserEmail,
       superAdminRole: superAdminRole ?? this.superAdminRole,
@@ -185,6 +213,10 @@ class Configs {
       'functionAPIKey': functionAPIKey,
       'databaseId': databaseId,
       'loggingDatabaseId': loggingDatabaseId,
+      'appImagesBucketId': appImagesBucketId,
+      'loginImageId': loginImageId,
+      'republicLogoFull': republicLogoFull,
+      'republicLogoSmall': republicLogoSmall,
       'serversCollectionId': serversCollectionId,
       'checklistCollectionId': checklistCollectionId,
       'disksCollectionId': disksCollectionId,
@@ -204,6 +236,9 @@ class Configs {
       'applicationInfoDocId': applicationInfoDocId,
       'onUserCreatedfunctionId': onUserCreatedfunctionId,
       'sendEmailVerificationfunctionId': sendEmailVerificationfunctionId,
+      'loginFunctionId': loginFunctionId,
+      'getUserFunctionId': getUserFunctionId,
+      'getUserEmailFunctionId': getUserEmailFunctionId,
       'superAdminUserId': superAdminUserId,
       'superAdminUserEmail': superAdminUserEmail,
       'superAdminRole': superAdminRole,
@@ -225,6 +260,10 @@ class Configs {
       functionAPIKey: map['functionAPIKey'] as String,
       databaseId: map['databaseId'] as String,
       loggingDatabaseId: map['loggingDatabaseId'] as String,
+      appImagesBucketId: map['appImagesBucketId'] as String,
+      loginImageId: map['loginImageId'] as String,
+      republicLogoFull: map['republicLogoFull'] as String,
+      republicLogoSmall: map['republicLogoSmall'] as String,
       serversCollectionId: map['serversCollectionId'] as String,
       checklistCollectionId: map['checklistCollectionId'] as String,
       disksCollectionId: map['disksCollectionId'] as String,
@@ -244,6 +283,9 @@ class Configs {
       applicationInfoDocId: map['applicationInfoDocId'] as String,
       onUserCreatedfunctionId: map['onUserCreatedfunctionId'] as String,
       sendEmailVerificationfunctionId: map['sendEmailVerificationfunctionId'] as String,
+      loginFunctionId: map['loginFunctionId'] as String,
+      getUserFunctionId: map['getUserFunctionId'] as String,
+      getUserEmailFunctionId: map['getUserEmailFunctionId'] as String,
       superAdminUserId: map['superAdminUserId'] as String,
       superAdminUserEmail: map['superAdminUserEmail'] as String,
       superAdminRole: map['superAdminRole'] as String,
@@ -265,6 +307,10 @@ class Configs {
       functionAPIKey: map['functionAPIKey'] as String,
       databaseId: map['databaseId'] as String,
       loggingDatabaseId: map['loggingDatabaseId'] as String,
+      appImagesBucketId: map['appImagesBucketId'] as String,
+      loginImageId: map['loginImageId'] as String,
+      republicLogoFull: map['republicLogoFull'] as String,
+      republicLogoSmall: map['republicLogoSmall'] as String,
       serversCollectionId: map['serversCollectionId'] as String,
       checklistCollectionId: map['checklistCollectionId'] as String,
       disksCollectionId: map['disksCollectionId'] as String,
@@ -284,6 +330,9 @@ class Configs {
       applicationInfoDocId: map['applicationInfoDocId'] as String,
       onUserCreatedfunctionId: map['onUserCreatedfunctionId'] as String,
       sendEmailVerificationfunctionId: map['sendEmailVerificationfunctionId'] as String,
+      loginFunctionId: map['loginFunctionId'] as String,
+      getUserFunctionId: map['getUserFunctionId'] as String,
+      getUserEmailFunctionId: map['getUserEmailFunctionId'] as String,
       superAdminUserId: map['superAdminUserId'] as String,
       superAdminUserEmail: map['superAdminUserEmail'] as String,
       superAdminRole: map['superAdminRole'] as String,
@@ -298,7 +347,7 @@ class Configs {
 
   @override
   String toString() {
-    return 'Configs(host: $host, login: $login, password: $password, port: $port, basedn: $basedn, projectId: $projectId, endpoint: $endpoint, serverpodEndpoint: $serverpodEndpoint, functionAPIKey: $functionAPIKey, databaseId: $databaseId, loggingDatabaseId: $loggingDatabaseId, serversCollectionId: $serversCollectionId, checklistCollectionId: $checklistCollectionId, disksCollectionId: $disksCollectionId, cpuCollectionId: $cpuCollectionId, ramCollectionId: $ramCollectionId, networksCollectionId: $networksCollectionId, antivirusCollectionId: $antivirusCollectionId, eventsCollectionId: $eventsCollectionId, servicesCollectionId: $servicesCollectionId, errorsCollectionId: $errorsCollectionId, activeDirectoryGroupsCollectionId: $activeDirectoryGroupsCollectionId, userInfoCollectionId: $userInfoCollectionId, groupsCollectionId: $groupsCollectionId, rolesCollectionId: $rolesCollectionId, permissionsCollectionId: $permissionsCollectionId, applicationInfoCollectionId: $applicationInfoCollectionId, applicationInfoDocId: $applicationInfoDocId, onUserCreatedfunctionId: $onUserCreatedfunctionId, sendEmailVerificationfunctionId: $sendEmailVerificationfunctionId, superAdminUserId: $superAdminUserId, superAdminUserEmail: $superAdminUserEmail, superAdminRole: $superAdminRole, superAdminGroup: $superAdminGroup, defaultRoleForNewUsers: $defaultRoleForNewUsers)';
+    return 'Configs(host: $host, login: $login, password: $password, port: $port, basedn: $basedn, projectId: $projectId, endpoint: $endpoint, serverpodEndpoint: $serverpodEndpoint, functionAPIKey: $functionAPIKey, databaseId: $databaseId, loggingDatabaseId: $loggingDatabaseId, appImagesBucketId: $appImagesBucketId, loginImageId: $loginImageId, republicLogoFull: $republicLogoFull, republicLogoSmall: $republicLogoSmall, serversCollectionId: $serversCollectionId, checklistCollectionId: $checklistCollectionId, disksCollectionId: $disksCollectionId, cpuCollectionId: $cpuCollectionId, ramCollectionId: $ramCollectionId, networksCollectionId: $networksCollectionId, antivirusCollectionId: $antivirusCollectionId, eventsCollectionId: $eventsCollectionId, servicesCollectionId: $servicesCollectionId, errorsCollectionId: $errorsCollectionId, activeDirectoryGroupsCollectionId: $activeDirectoryGroupsCollectionId, userInfoCollectionId: $userInfoCollectionId, groupsCollectionId: $groupsCollectionId, rolesCollectionId: $rolesCollectionId, permissionsCollectionId: $permissionsCollectionId, applicationInfoCollectionId: $applicationInfoCollectionId, applicationInfoDocId: $applicationInfoDocId, onUserCreatedfunctionId: $onUserCreatedfunctionId, sendEmailVerificationfunctionId: $sendEmailVerificationfunctionId, loginFunctionId: $loginFunctionId, getUserFunctionId: $getUserFunctionId, getUserEmailFunctionId: $getUserEmailFunctionId, superAdminUserId: $superAdminUserId, superAdminUserEmail: $superAdminUserEmail, superAdminRole: $superAdminRole, superAdminGroup: $superAdminGroup, defaultRoleForNewUsers: $defaultRoleForNewUsers)';
   }
 
   @override
@@ -317,6 +366,10 @@ class Configs {
       other.functionAPIKey == functionAPIKey &&
       other.databaseId == databaseId &&
       other.loggingDatabaseId == loggingDatabaseId &&
+      other.appImagesBucketId == appImagesBucketId &&
+      other.loginImageId == loginImageId &&
+      other.republicLogoFull == republicLogoFull &&
+      other.republicLogoSmall == republicLogoSmall &&
       other.serversCollectionId == serversCollectionId &&
       other.checklistCollectionId == checklistCollectionId &&
       other.disksCollectionId == disksCollectionId &&
@@ -336,6 +389,9 @@ class Configs {
       other.applicationInfoDocId == applicationInfoDocId &&
       other.onUserCreatedfunctionId == onUserCreatedfunctionId &&
       other.sendEmailVerificationfunctionId == sendEmailVerificationfunctionId &&
+      other.loginFunctionId == loginFunctionId &&
+      other.getUserFunctionId == getUserFunctionId &&
+      other.getUserEmailFunctionId == getUserEmailFunctionId &&
       other.superAdminUserId == superAdminUserId &&
       other.superAdminUserEmail == superAdminUserEmail &&
       other.superAdminRole == superAdminRole &&
@@ -356,6 +412,10 @@ class Configs {
       functionAPIKey.hashCode ^
       databaseId.hashCode ^
       loggingDatabaseId.hashCode ^
+      appImagesBucketId.hashCode ^
+      loginImageId.hashCode ^
+      republicLogoFull.hashCode ^
+      republicLogoSmall.hashCode ^
       serversCollectionId.hashCode ^
       checklistCollectionId.hashCode ^
       disksCollectionId.hashCode ^
@@ -375,6 +435,9 @@ class Configs {
       applicationInfoDocId.hashCode ^
       onUserCreatedfunctionId.hashCode ^
       sendEmailVerificationfunctionId.hashCode ^
+      loginFunctionId.hashCode ^
+      getUserFunctionId.hashCode ^
+      getUserEmailFunctionId.hashCode ^
       superAdminUserId.hashCode ^
       superAdminUserEmail.hashCode ^
       superAdminRole.hashCode ^
