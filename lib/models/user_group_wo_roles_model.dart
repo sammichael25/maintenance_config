@@ -1,10 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:dart_appwrite/models.dart';
+
 class UserGroupWORoles {
   String id;
   String name;
   String? groupDesc;
+
   UserGroupWORoles({
     required this.id,
     required this.name,
@@ -36,6 +39,21 @@ class UserGroupWORoles {
       id: map['\$id'] as String,
       name: map['name'] as String,
       groupDesc: map['groupDesc'] != null ? map['groupDesc'] as String : null,
+    );
+  }
+
+  Map<String, dynamic> toNewDoc() {
+    return <String, dynamic>{
+      'name': name,
+      'groupDesc': groupDesc,
+    };
+  }
+
+  factory UserGroupWORoles.fromDoc(Document doc) {
+    return UserGroupWORoles(
+      id: doc.$id,
+      name: doc.data['name'] as String,
+      groupDesc: doc.data['groupDesc'] != null ? doc.data['groupDesc'] as String : null,
     );
   }
 

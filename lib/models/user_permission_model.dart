@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:dart_appwrite/models.dart';
+
 class UserPermission {
   String id;
   String name;
@@ -36,6 +38,14 @@ class UserPermission {
       id: map['\$id'] as String,
       name: map['name'] as String,
       permissionDesc: map['permissionDesc'] != null ? map['permissionDesc'] as String : null,
+    );
+  }
+
+  factory UserPermission.fromDoc(Document doc) {
+    return UserPermission(
+      id: doc.$id,
+      name: doc.data['name'] as String,
+      permissionDesc: doc.data['permissionDesc'] != null ? doc.data['permissionDesc'] as String : null,
     );
   }
 

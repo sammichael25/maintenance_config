@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:dart_appwrite/models.dart';
 import 'package:maintenance_config/models/user_role_wo_user_info_model.dart';
 
 
@@ -9,6 +10,7 @@ class UserInfoBase {
   String id;
   String workstationIp;
   UserRoleWOUserInfo role;
+
   UserInfoBase({
     required this.id,
     required this.workstationIp,
@@ -40,6 +42,21 @@ class UserInfoBase {
       id: map['\$id'] as String,
       workstationIp: map['workstationIp'] as String,
       role: UserRoleWOUserInfo.fromMap(map['role'] as Map<String,dynamic>),
+    );
+  }
+
+  Map<String, dynamic> toNewDoc() {
+    return <String, dynamic>{
+      'workstationIp': workstationIp,
+      'role': role.toMap(),
+    };
+  }
+
+  factory UserInfoBase.fromDoc(Document doc) {
+    return UserInfoBase(
+      id: doc.$id,
+      workstationIp: doc.data['workstationIp'] as String,
+      role: UserRoleWOUserInfo.fromMap(doc.data['role'] as Map<String,dynamic>),
     );
   }
 
