@@ -9,7 +9,7 @@ class Communication {
     return context.res.json({
       'success': true,
       'message': message,
-    }, status: 200);
+    });
   }
 
   static dynamic returnFailure(final context, final String message, {String e = '', String s = ''}) {
