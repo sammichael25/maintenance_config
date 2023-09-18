@@ -1,17 +1,38 @@
+import 'dart:io' show Platform;
+
 class Communication {
-  static void returnSuccess(final res, final message) {
-    print(message);
-    res.json({
+  static dynamic returnSuccess(final context, final message) {
+    if (Platform.isWindows) {
+      print(message);
+    }
+    context.log(message);
+    return context.res.json({
       'success': true,
       'message': message,
     }, status: 200);
   }
 
-  static void returnFailure(final res, final String message) {
-    print(message);
-    res.json({
+  static dynamic returnFailure(final context, final String message, {String e = '', String s = ''}) {
+    if (Platform.isWindows) {
+      print(message);
+    }
+    context.log(message);
+    if (e.isNotEmpty) {
+      // print(e);
+      if (Platform.isWindows) {
+        print(e);
+      }
+      context.error(e);
+    }
+    if (s.isNotEmpty) {
+      if (Platform.isWindows) {
+        print(s);
+      }
+      context.error(s);
+    }
+    return context.res.json({
       'success': false,
       'message': message,
-    }, status: 500);
+    }); //, status: 500
   }
 }
