@@ -29,7 +29,6 @@ class Configs {
   String basedn;
   String projectId;
   String endpoint;
-  String serverpodEndpoint;
   String functionAPIKey;
   String databaseId;
   String loggingDatabaseId;
@@ -54,16 +53,26 @@ class Configs {
   String permissionsCollectionId;
   String applicationInfoCollectionId;
   String applicationInfoDocId;
-  String onUserCreatedfunctionId;
-  String sendEmailVerificationfunctionId;
-  String loginFunctionId;
-  String getUserFunctionId;
-  String getUserEmailFunctionId;
   String superAdminUserId;
   String superAdminUserEmail;
   String superAdminRole;
   String superAdminGroup;
   String defaultRoleForNewUsers;
+  String sendEmailVerificationfunctionId;
+  String loginFunctionId;
+  String getUserFunctionId;
+  String getUserEmailFunctionId;
+  String deleteUserFunctionID;
+  String searchADUserFunctionID;
+  String addNewUserFunctionID;
+  String getAllUsersFunctionID;
+  String getAllRolesFunctionID;
+  String getAllGroupsFunctionID;
+  String getAllPermissionsFunctionID;
+  String updateUserInfoFunctionID;
+  String addNewGroupFunctionID;
+  String updateGroupFunctionID;
+  String deleteGroupFunctionID;
 
   Configs({
     required this.host,
@@ -73,7 +82,6 @@ class Configs {
     required this.basedn,
     required this.projectId,
     required this.endpoint,
-    required this.serverpodEndpoint,
     required this.functionAPIKey,
     required this.databaseId,
     required this.loggingDatabaseId,
@@ -98,16 +106,26 @@ class Configs {
     required this.permissionsCollectionId,
     required this.applicationInfoCollectionId,
     required this.applicationInfoDocId,
-    required this.onUserCreatedfunctionId,
-    required this.sendEmailVerificationfunctionId,
-    required this.loginFunctionId,
-    required this.getUserFunctionId,
-    required this.getUserEmailFunctionId,
     required this.superAdminUserId,
     required this.superAdminUserEmail,
     required this.superAdminRole,
     required this.superAdminGroup,
     required this.defaultRoleForNewUsers,
+    required this.sendEmailVerificationfunctionId,
+    required this.loginFunctionId,
+    required this.getUserFunctionId,
+    required this.getUserEmailFunctionId,
+    required this.deleteUserFunctionID,
+    required this.searchADUserFunctionID,
+    required this.addNewUserFunctionID,
+    required this.getAllUsersFunctionID,
+    required this.getAllRolesFunctionID,
+    required this.getAllGroupsFunctionID,
+    required this.getAllPermissionsFunctionID,
+    required this.updateUserInfoFunctionID,
+    required this.addNewGroupFunctionID,
+    required this.updateGroupFunctionID,
+    required this.deleteGroupFunctionID,
   });
 
   Configs copyWith({
@@ -118,7 +136,6 @@ class Configs {
     String? basedn,
     String? projectId,
     String? endpoint,
-    String? serverpodEndpoint,
     String? functionAPIKey,
     String? databaseId,
     String? loggingDatabaseId,
@@ -143,16 +160,26 @@ class Configs {
     String? permissionsCollectionId,
     String? applicationInfoCollectionId,
     String? applicationInfoDocId,
-    String? onUserCreatedfunctionId,
-    String? sendEmailVerificationfunctionId,
-    String? loginFunctionId,
-    String? getUserFunctionId,
-    String? getUserEmailFunctionId,
     String? superAdminUserId,
     String? superAdminUserEmail,
     String? superAdminRole,
     String? superAdminGroup,
     String? defaultRoleForNewUsers,
+    String? sendEmailVerificationfunctionId,
+    String? loginFunctionId,
+    String? getUserFunctionId,
+    String? getUserEmailFunctionId,
+    String? deleteUserFunctionID,
+    String? searchADUserFunctionID,
+    String? addNewUserFunctionID,
+    String? getAllUsersFunctionID,
+    String? getAllRolesFunctionID,
+    String? getAllGroupsFunctionID,
+    String? getAllPermissionsFunctionID,
+    String? updateUserInfoFunctionID,
+    String? addNewGroupFunctionID,
+    String? updateGroupFunctionID,
+    String? deleteGroupFunctionID,
   }) {
     return Configs(
       host: host ?? this.host,
@@ -162,7 +189,6 @@ class Configs {
       basedn: basedn ?? this.basedn,
       projectId: projectId ?? this.projectId,
       endpoint: endpoint ?? this.endpoint,
-      serverpodEndpoint: serverpodEndpoint ?? this.serverpodEndpoint,
       functionAPIKey: functionAPIKey ?? this.functionAPIKey,
       databaseId: databaseId ?? this.databaseId,
       loggingDatabaseId: loggingDatabaseId ?? this.loggingDatabaseId,
@@ -187,16 +213,26 @@ class Configs {
       permissionsCollectionId: permissionsCollectionId ?? this.permissionsCollectionId,
       applicationInfoCollectionId: applicationInfoCollectionId ?? this.applicationInfoCollectionId,
       applicationInfoDocId: applicationInfoDocId ?? this.applicationInfoDocId,
-      onUserCreatedfunctionId: onUserCreatedfunctionId ?? this.onUserCreatedfunctionId,
-      sendEmailVerificationfunctionId: sendEmailVerificationfunctionId ?? this.sendEmailVerificationfunctionId,
-      loginFunctionId: loginFunctionId ?? this.loginFunctionId,
-      getUserFunctionId: getUserFunctionId ?? this.getUserFunctionId,
-      getUserEmailFunctionId: getUserEmailFunctionId ?? this.getUserEmailFunctionId,
       superAdminUserId: superAdminUserId ?? this.superAdminUserId,
       superAdminUserEmail: superAdminUserEmail ?? this.superAdminUserEmail,
       superAdminRole: superAdminRole ?? this.superAdminRole,
       superAdminGroup: superAdminGroup ?? this.superAdminGroup,
       defaultRoleForNewUsers: defaultRoleForNewUsers ?? this.defaultRoleForNewUsers,
+      sendEmailVerificationfunctionId: sendEmailVerificationfunctionId ?? this.sendEmailVerificationfunctionId,
+      loginFunctionId: loginFunctionId ?? this.loginFunctionId,
+      getUserFunctionId: getUserFunctionId ?? this.getUserFunctionId,
+      getUserEmailFunctionId: getUserEmailFunctionId ?? this.getUserEmailFunctionId,
+      deleteUserFunctionID: deleteUserFunctionID ?? this.deleteUserFunctionID,
+      searchADUserFunctionID: searchADUserFunctionID ?? this.searchADUserFunctionID,
+      addNewUserFunctionID: addNewUserFunctionID ?? this.addNewUserFunctionID,
+      getAllUsersFunctionID: getAllUsersFunctionID ?? this.getAllUsersFunctionID,
+      getAllRolesFunctionID: getAllRolesFunctionID ?? this.getAllRolesFunctionID,
+      getAllGroupsFunctionID: getAllGroupsFunctionID ?? this.getAllGroupsFunctionID,
+      getAllPermissionsFunctionID: getAllPermissionsFunctionID ?? this.getAllPermissionsFunctionID,
+      updateUserInfoFunctionID: updateUserInfoFunctionID ?? this.updateUserInfoFunctionID,
+      addNewGroupFunctionID: addNewGroupFunctionID ?? this.addNewGroupFunctionID,
+      updateGroupFunctionID: updateGroupFunctionID ?? this.updateGroupFunctionID,
+      deleteGroupFunctionID: deleteGroupFunctionID ?? this.deleteGroupFunctionID,
     );
   }
 
@@ -209,7 +245,6 @@ class Configs {
       'basedn': basedn,
       'projectId': projectId,
       'endpoint': endpoint,
-      'serverpodEndpoint': serverpodEndpoint,
       'functionAPIKey': functionAPIKey,
       'databaseId': databaseId,
       'loggingDatabaseId': loggingDatabaseId,
@@ -234,16 +269,26 @@ class Configs {
       'permissionsCollectionId': permissionsCollectionId,
       'applicationInfoCollectionId': applicationInfoCollectionId,
       'applicationInfoDocId': applicationInfoDocId,
-      'onUserCreatedfunctionId': onUserCreatedfunctionId,
-      'sendEmailVerificationfunctionId': sendEmailVerificationfunctionId,
-      'loginFunctionId': loginFunctionId,
-      'getUserFunctionId': getUserFunctionId,
-      'getUserEmailFunctionId': getUserEmailFunctionId,
       'superAdminUserId': superAdminUserId,
       'superAdminUserEmail': superAdminUserEmail,
       'superAdminRole': superAdminRole,
       'superAdminGroup': superAdminGroup,
       'defaultRoleForNewUsers': defaultRoleForNewUsers,
+      'sendEmailVerificationfunctionId': sendEmailVerificationfunctionId,
+      'loginFunctionId': loginFunctionId,
+      'getUserFunctionId': getUserFunctionId,
+      'getUserEmailFunctionId': getUserEmailFunctionId,
+      'deleteUserFunctionID': deleteUserFunctionID,
+      'searchADUserFunctionID': searchADUserFunctionID,
+      'addNewUserFunctionID': addNewUserFunctionID,
+      'getAllUsersFunctionID': getAllUsersFunctionID,
+      'getAllRolesFunctionID': getAllRolesFunctionID,
+      'getAllGroupsFunctionID': getAllGroupsFunctionID,
+      'getAllPermissionsFunctionID': getAllPermissionsFunctionID,
+      'updateUserInfoFunctionID': updateUserInfoFunctionID,
+      'addNewGroupFunctionID': addNewGroupFunctionID,
+      'updateGroupFunctionID': updateGroupFunctionID,
+      'deleteGroupFunctionID': deleteGroupFunctionID,
     };
   }
 
@@ -256,7 +301,6 @@ class Configs {
       basedn: map['basedn'] as String,
       projectId: map['projectId'] as String,
       endpoint: map['endpoint'] as String,
-      serverpodEndpoint: map['serverpodEndpoint'] as String,
       functionAPIKey: map['functionAPIKey'] as String,
       databaseId: map['databaseId'] as String,
       loggingDatabaseId: map['loggingDatabaseId'] as String,
@@ -281,16 +325,27 @@ class Configs {
       permissionsCollectionId: map['permissionsCollectionId'] as String,
       applicationInfoCollectionId: map['applicationInfoCollectionId'] as String,
       applicationInfoDocId: map['applicationInfoDocId'] as String,
-      onUserCreatedfunctionId: map['onUserCreatedfunctionId'] as String,
-      sendEmailVerificationfunctionId: map['sendEmailVerificationfunctionId'] as String,
-      loginFunctionId: map['loginFunctionId'] as String,
-      getUserFunctionId: map['getUserFunctionId'] as String,
-      getUserEmailFunctionId: map['getUserEmailFunctionId'] as String,
       superAdminUserId: map['superAdminUserId'] as String,
       superAdminUserEmail: map['superAdminUserEmail'] as String,
       superAdminRole: map['superAdminRole'] as String,
       superAdminGroup: map['superAdminGroup'] as String,
       defaultRoleForNewUsers: map['defaultRoleForNewUsers'] as String,
+      sendEmailVerificationfunctionId: map['sendEmailVerificationfunctionId'] as String,
+      loginFunctionId: map['loginFunctionId'] as String,
+      getUserFunctionId: map['getUserFunctionId'] as String,
+      getUserEmailFunctionId: map['getUserEmailFunctionId'] as String,
+      deleteUserFunctionID: map['deleteUserFunctionID'] as String,
+      searchADUserFunctionID: map['searchADUserFunctionID'] as String,
+      addNewUserFunctionID: map['addNewUserFunctionID'] as String,
+      getAllUsersFunctionID: map['getAllUsersFunctionID'] as String,
+      getAllRolesFunctionID: map['getAllRolesFunctionID'] as String,
+      getAllGroupsFunctionID: map['getAllGroupsFunctionID'] as String,
+      getAllPermissionsFunctionID: map['getAllPermissionsFunctionID'] as String,
+      updateUserInfoFunctionID: map['updateUserInfoFunctionID'] as String,
+      addNewGroupFunctionID: map['addNewGroupFunctionID'] as String,
+      updateGroupFunctionID: map['updateGroupFunctionID'] as String,
+      deleteGroupFunctionID: map['deleteGroupFunctionID'] as String,
+      
     );
   }
 
@@ -303,7 +358,6 @@ class Configs {
       basedn: map['basedn'] as String,
       projectId: map['projectId'] as String,
       endpoint: map['endpoint'] as String,
-      serverpodEndpoint: map['serverpodEndpoint'] as String,
       functionAPIKey: map['functionAPIKey'] as String,
       databaseId: map['databaseId'] as String,
       loggingDatabaseId: map['loggingDatabaseId'] as String,
@@ -328,16 +382,26 @@ class Configs {
       permissionsCollectionId: map['permissionsCollectionId'] as String,
       applicationInfoCollectionId: map['applicationInfoCollectionId'] as String,
       applicationInfoDocId: map['applicationInfoDocId'] as String,
-      onUserCreatedfunctionId: map['onUserCreatedfunctionId'] as String,
-      sendEmailVerificationfunctionId: map['sendEmailVerificationfunctionId'] as String,
-      loginFunctionId: map['loginFunctionId'] as String,
-      getUserFunctionId: map['getUserFunctionId'] as String,
-      getUserEmailFunctionId: map['getUserEmailFunctionId'] as String,
       superAdminUserId: map['superAdminUserId'] as String,
       superAdminUserEmail: map['superAdminUserEmail'] as String,
       superAdminRole: map['superAdminRole'] as String,
       superAdminGroup: map['superAdminGroup'] as String,
       defaultRoleForNewUsers: map['defaultRoleForNewUsers'] as String,
+      sendEmailVerificationfunctionId: map['sendEmailVerificationfunctionId'] as String,
+      loginFunctionId: map['loginFunctionId'] as String,
+      getUserFunctionId: map['getUserFunctionId'] as String,
+      getUserEmailFunctionId: map['getUserEmailFunctionId'] as String,
+      deleteUserFunctionID: map['deleteUserFunctionID'] as String,
+      searchADUserFunctionID: map['searchADUserFunctionID'] as String,
+      addNewUserFunctionID: map['addNewUserFunctionID'] as String,
+      getAllUsersFunctionID: map['getAllUsersFunctionID'] as String,
+      getAllRolesFunctionID: map['getAllRolesFunctionID'] as String,
+      getAllGroupsFunctionID: map['getAllGroupsFunctionID'] as String,
+      getAllPermissionsFunctionID: map['getAllPermissionsFunctionID'] as String,
+      updateUserInfoFunctionID: map['updateUserInfoFunctionID'] as String,
+      addNewGroupFunctionID: map['addNewGroupFunctionID'] as String,
+      updateGroupFunctionID: map['updateGroupFunctionID'] as String,
+      deleteGroupFunctionID: map['deleteGroupFunctionID'] as String,
     );
   }
 
@@ -347,7 +411,7 @@ class Configs {
 
   @override
   String toString() {
-    return 'Configs(host: $host, login: $login, password: $password, port: $port, basedn: $basedn, projectId: $projectId, endpoint: $endpoint, serverpodEndpoint: $serverpodEndpoint, functionAPIKey: $functionAPIKey, databaseId: $databaseId, loggingDatabaseId: $loggingDatabaseId, appImagesBucketId: $appImagesBucketId, loginImageId: $loginImageId, republicLogoFull: $republicLogoFull, republicLogoSmall: $republicLogoSmall, serversCollectionId: $serversCollectionId, checklistCollectionId: $checklistCollectionId, disksCollectionId: $disksCollectionId, cpuCollectionId: $cpuCollectionId, ramCollectionId: $ramCollectionId, networksCollectionId: $networksCollectionId, antivirusCollectionId: $antivirusCollectionId, eventsCollectionId: $eventsCollectionId, servicesCollectionId: $servicesCollectionId, errorsCollectionId: $errorsCollectionId, activeDirectoryGroupsCollectionId: $activeDirectoryGroupsCollectionId, userInfoCollectionId: $userInfoCollectionId, groupsCollectionId: $groupsCollectionId, rolesCollectionId: $rolesCollectionId, permissionsCollectionId: $permissionsCollectionId, applicationInfoCollectionId: $applicationInfoCollectionId, applicationInfoDocId: $applicationInfoDocId, onUserCreatedfunctionId: $onUserCreatedfunctionId, sendEmailVerificationfunctionId: $sendEmailVerificationfunctionId, loginFunctionId: $loginFunctionId, getUserFunctionId: $getUserFunctionId, getUserEmailFunctionId: $getUserEmailFunctionId, superAdminUserId: $superAdminUserId, superAdminUserEmail: $superAdminUserEmail, superAdminRole: $superAdminRole, superAdminGroup: $superAdminGroup, defaultRoleForNewUsers: $defaultRoleForNewUsers)';
+    return 'Configs(host: $host, login: $login, password: $password, port: $port, basedn: $basedn, projectId: $projectId, endpoint: $endpoint, functionAPIKey: $functionAPIKey, databaseId: $databaseId, loggingDatabaseId: $loggingDatabaseId, appImagesBucketId: $appImagesBucketId, loginImageId: $loginImageId, republicLogoFull: $republicLogoFull, republicLogoSmall: $republicLogoSmall, serversCollectionId: $serversCollectionId, checklistCollectionId: $checklistCollectionId, disksCollectionId: $disksCollectionId, cpuCollectionId: $cpuCollectionId, ramCollectionId: $ramCollectionId, networksCollectionId: $networksCollectionId, antivirusCollectionId: $antivirusCollectionId, eventsCollectionId: $eventsCollectionId, servicesCollectionId: $servicesCollectionId, errorsCollectionId: $errorsCollectionId, activeDirectoryGroupsCollectionId: $activeDirectoryGroupsCollectionId, userInfoCollectionId: $userInfoCollectionId, groupsCollectionId: $groupsCollectionId, rolesCollectionId: $rolesCollectionId, permissionsCollectionId: $permissionsCollectionId, applicationInfoCollectionId: $applicationInfoCollectionId, applicationInfoDocId: $applicationInfoDocId, superAdminUserId: $superAdminUserId, superAdminUserEmail: $superAdminUserEmail, superAdminRole: $superAdminRole, superAdminGroup: $superAdminGroup, defaultRoleForNewUsers: $defaultRoleForNewUsers, sendEmailVerificationfunctionId: $sendEmailVerificationfunctionId, loginFunctionId: $loginFunctionId, getUserFunctionId: $getUserFunctionId, getUserEmailFunctionId: $getUserEmailFunctionId, deleteUserFunctionID: $deleteUserFunctionID, searchADUserFunctionID: $searchADUserFunctionID, addNewUserFunctionID: $addNewUserFunctionID, getAllUsersFunctionID: $getAllUsersFunctionID, getAllRolesFunctionID: $getAllRolesFunctionID, getAllGroupsFunctionID: $getAllGroupsFunctionID, getAllPermissionsFunctionID: $getAllPermissionsFunctionID, updateUserInfoFunctionID: $updateUserInfoFunctionID, addNewGroupFunctionID: $addNewGroupFunctionID, updateGroupFunctionID: $updateGroupFunctionID, deleteGroupFunctionID: $deleteGroupFunctionID)';
   }
 
   @override
@@ -362,7 +426,6 @@ class Configs {
       other.basedn == basedn &&
       other.projectId == projectId &&
       other.endpoint == endpoint &&
-      other.serverpodEndpoint == serverpodEndpoint &&
       other.functionAPIKey == functionAPIKey &&
       other.databaseId == databaseId &&
       other.loggingDatabaseId == loggingDatabaseId &&
@@ -387,16 +450,26 @@ class Configs {
       other.permissionsCollectionId == permissionsCollectionId &&
       other.applicationInfoCollectionId == applicationInfoCollectionId &&
       other.applicationInfoDocId == applicationInfoDocId &&
-      other.onUserCreatedfunctionId == onUserCreatedfunctionId &&
-      other.sendEmailVerificationfunctionId == sendEmailVerificationfunctionId &&
-      other.loginFunctionId == loginFunctionId &&
-      other.getUserFunctionId == getUserFunctionId &&
-      other.getUserEmailFunctionId == getUserEmailFunctionId &&
       other.superAdminUserId == superAdminUserId &&
       other.superAdminUserEmail == superAdminUserEmail &&
       other.superAdminRole == superAdminRole &&
       other.superAdminGroup == superAdminGroup &&
-      other.defaultRoleForNewUsers == defaultRoleForNewUsers;
+      other.defaultRoleForNewUsers == defaultRoleForNewUsers &&
+      other.sendEmailVerificationfunctionId == sendEmailVerificationfunctionId &&
+      other.loginFunctionId == loginFunctionId &&
+      other.getUserFunctionId == getUserFunctionId &&
+      other.getUserEmailFunctionId == getUserEmailFunctionId &&
+      other.deleteUserFunctionID == deleteUserFunctionID &&
+      other.searchADUserFunctionID == searchADUserFunctionID &&
+      other.addNewUserFunctionID == addNewUserFunctionID &&
+      other.getAllUsersFunctionID == getAllUsersFunctionID &&
+      other.getAllRolesFunctionID == getAllRolesFunctionID &&
+      other.getAllGroupsFunctionID == getAllGroupsFunctionID &&
+      other.getAllPermissionsFunctionID == getAllPermissionsFunctionID &&
+      other.updateUserInfoFunctionID == updateUserInfoFunctionID &&
+      other.addNewGroupFunctionID == addNewGroupFunctionID &&
+      other.updateGroupFunctionID == updateGroupFunctionID &&
+      other.deleteGroupFunctionID == deleteGroupFunctionID;
   }
 
   @override
@@ -408,7 +481,6 @@ class Configs {
       basedn.hashCode ^
       projectId.hashCode ^
       endpoint.hashCode ^
-      serverpodEndpoint.hashCode ^
       functionAPIKey.hashCode ^
       databaseId.hashCode ^
       loggingDatabaseId.hashCode ^
@@ -433,15 +505,25 @@ class Configs {
       permissionsCollectionId.hashCode ^
       applicationInfoCollectionId.hashCode ^
       applicationInfoDocId.hashCode ^
-      onUserCreatedfunctionId.hashCode ^
-      sendEmailVerificationfunctionId.hashCode ^
-      loginFunctionId.hashCode ^
-      getUserFunctionId.hashCode ^
-      getUserEmailFunctionId.hashCode ^
       superAdminUserId.hashCode ^
       superAdminUserEmail.hashCode ^
       superAdminRole.hashCode ^
       superAdminGroup.hashCode ^
-      defaultRoleForNewUsers.hashCode;
+      defaultRoleForNewUsers.hashCode ^
+      sendEmailVerificationfunctionId.hashCode ^
+      loginFunctionId.hashCode ^
+      getUserFunctionId.hashCode ^
+      getUserEmailFunctionId.hashCode ^
+      deleteUserFunctionID.hashCode ^
+      searchADUserFunctionID.hashCode ^
+      addNewUserFunctionID.hashCode ^
+      getAllUsersFunctionID.hashCode ^
+      getAllRolesFunctionID.hashCode ^
+      getAllGroupsFunctionID.hashCode ^
+      getAllPermissionsFunctionID.hashCode ^
+      updateUserInfoFunctionID.hashCode ^
+      addNewGroupFunctionID.hashCode ^
+      updateGroupFunctionID.hashCode ^
+      deleteGroupFunctionID.hashCode;
   }
 }

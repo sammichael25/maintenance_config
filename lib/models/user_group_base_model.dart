@@ -47,7 +47,11 @@ class UserGroupBase {
       id: map['\$id'] as String,
       name: map['name'] as String,
       groupDesc: map['groupDesc'] != null ? map['groupDesc'] as String : null,
-      roles: List<UserRoleWOGroupNUserInfo>.from((map['roles']).map<UserRoleWOGroupNUserInfo>((x) => UserRoleWOGroupNUserInfo.fromMap(x as Map<String,dynamic>),),),
+      roles: List<UserRoleWOGroupNUserInfo>.from(
+        (map['roles']).map<UserRoleWOGroupNUserInfo>(
+          (x) => UserRoleWOGroupNUserInfo.fromMap(x as Map<String, dynamic>),
+        ),
+      ),
     );
   }
 
@@ -64,7 +68,11 @@ class UserGroupBase {
       id: doc.$id,
       name: doc.data['name'] as String,
       groupDesc: doc.data['groupDesc'] != null ? doc.data['groupDesc'] as String : null,
-      roles: List<UserRoleWOGroupNUserInfo>.from((doc.data['roles']).map<UserRoleWOGroupNUserInfo>((x) => UserRoleWOGroupNUserInfo.fromMap(x as Map<String,dynamic>),),),
+      roles: List<UserRoleWOGroupNUserInfo>.from(
+        (doc.data['roles']).map<UserRoleWOGroupNUserInfo>(
+          (x) => UserRoleWOGroupNUserInfo.fromMap(x as Map<String, dynamic>),
+        ),
+      ),
     );
   }
 
@@ -81,19 +89,12 @@ class UserGroupBase {
   bool operator ==(covariant UserGroupBase other) {
     if (identical(this, other)) return true;
     final listEquals = const DeepCollectionEquality().equals;
-  
-    return 
-      other.id == id &&
-      other.name == name &&
-      other.groupDesc == groupDesc &&
-      listEquals(other.roles, roles);
+
+    return other.id == id && other.name == name && other.groupDesc == groupDesc && listEquals(other.roles, roles);
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^
-      name.hashCode ^
-      groupDesc.hashCode ^
-      roles.hashCode;
+    return id.hashCode ^ name.hashCode ^ groupDesc.hashCode ^ roles.hashCode;
   }
 }
