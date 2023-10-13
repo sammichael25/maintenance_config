@@ -16,9 +16,8 @@ class Communication {
     if (Platform.isWindows) {
       print(message);
     }
-    context.log(message);
+    context.error(message);
     if (e.isNotEmpty) {
-      // print(e);
       if (Platform.isWindows) {
         print(e);
       }
@@ -33,6 +32,6 @@ class Communication {
     return context.res.json({
       'success': false,
       'message': message,
-    }); //, status: 500
+    });
   }
 }
