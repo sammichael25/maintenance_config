@@ -11,7 +11,6 @@ class UserModel {
   String lname;
   String? title;
   String? ipPhone;
-  bool isLoggedIn;
   UserInfoBase userInfo;
   
   UserModel({
@@ -21,7 +20,6 @@ class UserModel {
     required this.lname,
     this.title,
     this.ipPhone,
-    required this.isLoggedIn,
     required this.userInfo,
   });
 
@@ -32,7 +30,6 @@ class UserModel {
     String? lname,
     String? title,
     String? ipPhone,
-    bool? isLoggedIn,
     UserInfoBase? userInfo,
   }) {
     return UserModel(
@@ -42,7 +39,6 @@ class UserModel {
       lname: lname ?? this.lname,
       title: title ?? this.title,
       ipPhone: ipPhone ?? this.ipPhone,
-      isLoggedIn: isLoggedIn ?? this.isLoggedIn,
       userInfo: userInfo ?? this.userInfo,
     );
   }
@@ -55,7 +51,6 @@ class UserModel {
       'lname': lname,
       'title': title,
       'ipPhone': ipPhone,
-      'isLoggedIn': isLoggedIn,
       'userInfo': userInfo.toMap(),
     };
   }
@@ -68,7 +63,6 @@ class UserModel {
       lname: map['lname'] as String,
       title: map['title'] != null ? map['title'] as String : null,
       ipPhone: map['ipPhone'] != null ? map['ipPhone'] as String : null,
-      isLoggedIn: map['isLoggedIn'] as bool,
       userInfo: UserInfoBase.fromMap(map['userInfo'] as Map<String,dynamic>),
     );
   }
@@ -79,7 +73,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(userDn: $userDn, email: $email, fname: $fname, lname: $lname, title: $title, ipPhone: $ipPhone, isLoggedIn: $isLoggedIn, userInfo: $userInfo)';
+    return 'UserModel(userDn: $userDn, email: $email, fname: $fname, lname: $lname, title: $title, ipPhone: $ipPhone, userInfo: $userInfo)';
   }
 
   @override
@@ -93,7 +87,6 @@ class UserModel {
       other.lname == lname &&
       other.title == title &&
       other.ipPhone == ipPhone &&
-      other.isLoggedIn == isLoggedIn &&
       other.userInfo == userInfo;
   }
 
@@ -105,7 +98,6 @@ class UserModel {
       lname.hashCode ^
       title.hashCode ^
       ipPhone.hashCode ^
-      isLoggedIn.hashCode ^
       userInfo.hashCode;
   }
 }
