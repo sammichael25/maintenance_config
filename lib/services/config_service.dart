@@ -13,9 +13,9 @@ class ConfigService {
   static late dynamic configMap;
   static late Configs configs;
 
-  static configServiceInit(String path) async {
-    configFile = File('$path/server_config.yaml');
-    yamlString = await configFile.readAsString();
+  static configServiceInit(String yamlString) async {
+    // configFile = File('$path/server_config.yaml');
+    // yamlString = await configFile.readAsString();
     configMap = loadYaml(yamlString);
     configs = Configs.fromYMLMap(configMap);
   }
