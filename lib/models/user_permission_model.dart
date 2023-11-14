@@ -8,26 +8,26 @@ class UserPermission {
   String id;
   String name;
   String? permissionDesc;
-  UserPermissionGroup permissionGroup;
+  UserPermissionGroup permissionGroups;
   
   UserPermission({
     required this.id,
     required this.name,
     this.permissionDesc,
-    required this.permissionGroup,
+    required this.permissionGroups,
   });
 
   UserPermission copyWith({
     String? id,
     String? name,
     String? permissionDesc,
-    UserPermissionGroup? permissionGroup,
+    UserPermissionGroup? permissionGroups,
   }) {
     return UserPermission(
       id: id ?? this.id,
       name: name ?? this.name,
       permissionDesc: permissionDesc ?? this.permissionDesc,
-      permissionGroup: permissionGroup ?? this.permissionGroup,
+      permissionGroups: permissionGroups ?? this.permissionGroups,
     );
   }
 
@@ -36,7 +36,7 @@ class UserPermission {
       '\$id': id,
       'name': name,
       'permissionDesc': permissionDesc,
-      'permissionGroup': permissionGroup.toMap(),
+      'permissionGroup': permissionGroups.toMap(),
     };
   }
 
@@ -45,7 +45,7 @@ class UserPermission {
       id: map['\$id'] as String,
       name: map['name'] as String,
       permissionDesc: map['permissionDesc'] != null ? map['permissionDesc'] as String : null,
-      permissionGroup: UserPermissionGroup.fromMap(map['permissionGroup'] as Map<String,dynamic>)
+      permissionGroups: UserPermissionGroup.fromMap(map['permissionGroups'] as Map<String,dynamic>)
     );
   }
 
@@ -54,7 +54,7 @@ class UserPermission {
       id: doc.$id,
       name: doc.data['name'] as String,
       permissionDesc: doc.data['permissionDesc'] != null ? doc.data['permissionDesc'] as String : null,
-      permissionGroup: UserPermissionGroup.fromMap(doc.data['permissionGroup'] as Map<String,dynamic>),
+      permissionGroups: UserPermissionGroup.fromMap(doc.data['permissionGroups'] as Map<String,dynamic>),
     );
   }
 
@@ -63,15 +63,15 @@ class UserPermission {
   factory UserPermission.fromJson(String source) => UserPermission.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'UserPermission(id: $id, name: $name, permissionDesc: $permissionDesc, permissionGroup: $permissionGroup)';
+  String toString() => 'UserPermission(id: $id, name: $name, permissionDesc: $permissionDesc, permissionGroups: $permissionGroups)';
 
   @override
   bool operator ==(covariant UserPermission other) {
     if (identical(this, other)) return true;
 
-    return other.id == id && other.name == name && other.permissionDesc == permissionDesc && other.permissionGroup == permissionGroup;
+    return other.id == id && other.name == name && other.permissionDesc == permissionDesc && other.permissionGroups == permissionGroups;
   }
 
   @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ permissionDesc.hashCode ^ permissionGroup.hashCode;
+  int get hashCode => id.hashCode ^ name.hashCode ^ permissionDesc.hashCode ^ permissionGroups.hashCode;
 }
