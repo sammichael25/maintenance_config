@@ -36,7 +36,7 @@ class UserPermission {
       '\$id': id,
       'name': name,
       'permissionDesc': permissionDesc,
-      'permissionGroup': permissionGroups.toMap(),
+      'permissionGroups': permissionGroups.toMap(),
     };
   }
 
