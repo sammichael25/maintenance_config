@@ -2,32 +2,31 @@
 import 'dart:convert';
 
 import 'package:dart_appwrite/models.dart';
-import 'package:maintenance_config/models/user_permission_group_model.dart';
 
 class UserPermission {
   String id;
   String name;
   String? permissionDesc;
-  UserPermissionGroup permissionGroups;
+  String group;
   
   UserPermission({
     required this.id,
     required this.name,
     this.permissionDesc,
-    required this.permissionGroups,
+    required this.group,
   });
 
   UserPermission copyWith({
     String? id,
     String? name,
     String? permissionDesc,
-    UserPermissionGroup? permissionGroups,
+    String? group,
   }) {
     return UserPermission(
       id: id ?? this.id,
       name: name ?? this.name,
       permissionDesc: permissionDesc ?? this.permissionDesc,
-      permissionGroups: permissionGroups ?? this.permissionGroups,
+      group: group ?? this.group,
     );
   }
 
@@ -36,7 +35,7 @@ class UserPermission {
       '\$id': id,
       'name': name,
       'permissionDesc': permissionDesc,
-      'permissionGroups': permissionGroups.toMap(),
+      'group': group,
     };
   }
 
@@ -45,7 +44,7 @@ class UserPermission {
       id: map['\$id'] as String,
       name: map['name'] as String,
       permissionDesc: map['permissionDesc'] != null ? map['permissionDesc'] as String : null,
-      permissionGroups: UserPermissionGroup.fromMap(map['permissionGroups'] as Map<String,dynamic>)
+      group: map['group'] as String,
     );
   }
 
@@ -54,7 +53,7 @@ class UserPermission {
       id: doc.$id,
       name: doc.data['name'] as String,
       permissionDesc: doc.data['permissionDesc'] != null ? doc.data['permissionDesc'] as String : null,
-      permissionGroups: UserPermissionGroup.fromMap(doc.data['permissionGroups'] as Map<String,dynamic>),
+      group: doc.data['group'] as String,
     );
   }
 
@@ -63,15 +62,15 @@ class UserPermission {
   factory UserPermission.fromJson(String source) => UserPermission.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'UserPermission(id: $id, name: $name, permissionDesc: $permissionDesc, permissionGroups: $permissionGroups)';
+  String toString() => 'UserPermission(id: $id, name: $name, permissionDesc: $permissionDesc, group: $group)';
 
   @override
   bool operator ==(covariant UserPermission other) {
     if (identical(this, other)) return true;
 
-    return other.id == id && other.name == name && other.permissionDesc == permissionDesc && other.permissionGroups == permissionGroups;
+    return other.id == id && other.name == name && other.permissionDesc == permissionDesc && other.group == group;
   }
 
   @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ permissionDesc.hashCode ^ permissionGroups.hashCode;
+  int get hashCode => id.hashCode ^ name.hashCode ^ permissionDesc.hashCode ^ group.hashCode;
 }
