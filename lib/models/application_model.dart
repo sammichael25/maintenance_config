@@ -1,0 +1,181 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
+import 'package:equatable/equatable.dart';
+
+import 'package:maintenance_config/models/certificate_model.dart';
+
+class ApplicationModel extends Equatable {
+  final int id;
+  final String application;
+  final String installPath;
+  final List<String> logFilesPaths;
+  final List<int> ports;
+  final List<String> tempFilesPaths;
+  final List<String> configFilesPaths;
+  final List<String> xmlConfigFilePath;
+  final List<ApplicationUser> users;
+  final List<CertificateModel> certificates;
+  final List<String> essentialServices;
+
+  const ApplicationModel({
+    required this.id,
+    required this.application,
+    required this.installPath,
+    required this.logFilesPaths,
+    required this.ports,
+    required this.tempFilesPaths,
+    required this.configFilesPaths,
+    required this.xmlConfigFilePath,
+    required this.users,
+    required this.certificates,
+    required this.essentialServices,
+  });
+
+  @override
+  List<Object> get props {
+    return [
+      id,
+      application,
+      installPath,
+      logFilesPaths,
+      ports,
+      tempFilesPaths,
+      configFilesPaths,
+      xmlConfigFilePath,
+      users,
+      certificates,
+      essentialServices,
+    ];
+  }
+
+  static const ApplicationModel empty = ApplicationModel(
+    id: 0,
+    application: '',
+    installPath: '',
+    logFilesPaths: [],
+    ports: [],
+    tempFilesPaths: [],
+    configFilesPaths: [],
+    xmlConfigFilePath: [],
+    users: [],
+    certificates: [],
+    essentialServices: [],
+  );
+
+  bool get isEmpty => this == ApplicationModel.empty;
+  bool get isNotEmpty => this != ApplicationModel.empty;
+
+  ApplicationModel copyWith({
+    int? id,
+    String? application,
+    String? installPath,
+    List<String>? logFilesPaths,
+    List<int>? ports,
+    List<String>? tempFilesPaths,
+    List<String>? configFilesPaths,
+    List<String>? xmlConfigFilePath,
+    List<ApplicationUser>? users,
+    List<CertificateModel>? certificates,
+    List<String>? essentialServices,
+  }) {
+    return ApplicationModel(
+      id: id ?? this.id,
+      application: application ?? this.application,
+      installPath: installPath ?? this.installPath,
+      logFilesPaths: logFilesPaths ?? this.logFilesPaths,
+      ports: ports ?? this.ports,
+      tempFilesPaths: tempFilesPaths ?? this.tempFilesPaths,
+      configFilesPaths: configFilesPaths ?? this.configFilesPaths,
+      xmlConfigFilePath: xmlConfigFilePath ?? this.xmlConfigFilePath,
+      users: users ?? this.users,
+      certificates: certificates ?? this.certificates,
+      essentialServices: essentialServices ?? this.essentialServices,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'application': application,
+      'installPath': installPath,
+      'logFilesPaths': logFilesPaths,
+      'ports': ports,
+      'tempFilesPaths': tempFilesPaths,
+      'configFilesPaths': configFilesPaths,
+      'xmlConfigFilePath': xmlConfigFilePath,
+      'users': users.map((x) => x.toMap()).toList(),
+      'certificates': certificates.map((x) => x.toMap()).toList(),
+      'essentialServices': essentialServices,
+    };
+  }
+
+  factory ApplicationModel.fromMap(Map<String, dynamic> map) {
+    return ApplicationModel(
+      id: map['id'] ?? '',
+      application: map['application'] ?? '',
+      installPath: map['installPath'] ?? '',
+      logFilesPaths: List<String>.from(map['logFilesPaths']),
+      ports: List<int>.from(map['ports']),
+      tempFilesPaths: List<String>.from(map['tempFilesPaths']),
+      configFilesPaths: List<String>.from(map['configFilesPaths']),
+      xmlConfigFilePath: List<String>.from(map['xmlConfigFilePath']),
+      users: List<ApplicationUser>.from(map['users'].map((x) => ApplicationUser.fromMap(x))),
+      certificates: List<CertificateModel>.from(map['certificates'].map((x) => CertificateModel.fromMap(x))),
+      essentialServices: List<String>.from(map['essentialServices']),
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory ApplicationModel.fromJson(String source) => ApplicationModel.fromMap(json.decode(source));
+
+  @override
+  String toString() {
+    return 'ApplicationModel(id: $id, application: $application, installPath: $installPath, logFilesPaths: $logFilesPaths, ports: $ports, tempFilesPaths: $tempFilesPaths, configFilesPaths: $configFilesPaths, xmlConfigFilePath: $xmlConfigFilePath, users: $users, certificates: $certificates, essentialServices: $essentialServices)';
+  }
+}
+
+class ApplicationUser extends Equatable {
+  final String userName;
+  final String password;
+
+  ApplicationUser({
+    required this.userName,
+    required this.password,
+  });
+
+  ApplicationUser copyWith({
+    String? userName,
+    String? password,
+  }) {
+    return ApplicationUser(
+      userName: userName ?? this.userName,
+      password: password ?? this.password,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'userName': userName,
+      'password': password,
+    };
+  }
+
+  factory ApplicationUser.fromMap(Map<String, dynamic> map) {
+    return ApplicationUser(
+      userName: map['userName'] ?? '',
+      password: map['password'] ?? '',
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory ApplicationUser.fromJson(String source) => ApplicationUser.fromMap(json.decode(source));
+
+  @override
+  String toString() => 'ApplicationUser(userName: $userName, password: $password)';
+
+  @override
+  List<Object> get props => [userName, password];
+}
