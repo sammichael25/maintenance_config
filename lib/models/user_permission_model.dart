@@ -2,14 +2,15 @@
 import 'dart:convert';
 
 import 'package:dart_appwrite/models.dart';
+import 'package:equatable/equatable.dart';
 
-class UserPermission {
-  String id;
-  String name;
-  String? permissionDesc;
-  String group;
+class UserPermission extends Equatable {
+  final String id;
+  final String name;
+  final String? permissionDesc;
+  final String group;
   
-  UserPermission({
+  const UserPermission({
     required this.id,
     required this.name,
     this.permissionDesc,
@@ -64,13 +65,12 @@ class UserPermission {
   @override
   String toString() => 'UserPermission(id: $id, name: $name, permissionDesc: $permissionDesc, group: $group)';
 
-  @override
-  bool operator ==(covariant UserPermission other) {
-    if (identical(this, other)) return true;
+  static const UserPermission empty = UserPermission(id: '', name: '', permissionDesc: '', group: '');
 
-    return other.id == id && other.name == name && other.permissionDesc == permissionDesc && other.group == group;
-  }
+  bool get isEmpty => this == UserPermission.empty;
+
+  bool get isNotEmpty => this != UserPermission.empty;
 
   @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ permissionDesc.hashCode ^ group.hashCode;
+  List<Object?> get props => [id, name, permissionDesc, group];
 }

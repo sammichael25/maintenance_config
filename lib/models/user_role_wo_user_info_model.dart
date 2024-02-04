@@ -1,20 +1,20 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:collection/collection.dart';
 import 'package:dart_appwrite/models.dart';
+import 'package:equatable/equatable.dart';
+
 import 'package:maintenance_config/models/user_group_wo_roles_model.dart';
 import 'package:maintenance_config/models/user_permission_model.dart';
 
+class UserRoleWOUserInfo extends Equatable {
+  final String id;
+  final String name;
+  final String? roleDesc;
+  final UserGroupWORoles group;
+  final List<UserPermission> permissions;
 
-
-class UserRoleWOUserInfo {
-  String id;
-  String name;
-  String? roleDesc;
-  UserGroupWORoles group;
-  List<UserPermission> permissions;
-  UserRoleWOUserInfo({
+  const UserRoleWOUserInfo({
     required this.id,
     required this.name,
     this.roleDesc,
@@ -77,25 +77,20 @@ class UserRoleWOUserInfo {
     return 'UserRoleWOUserInfo(id: $id, name: $name, roleDesc: $roleDesc, group: $group, permissions: $permissions)';
   }
 
-  @override
-  bool operator ==(covariant UserRoleWOUserInfo other) {
-    if (identical(this, other)) return true;
-    final listEquals = const DeepCollectionEquality().equals;
-  
-    return 
-      other.id == id &&
-      other.name == name &&
-      other.roleDesc == roleDesc &&
-      other.group == group &&
-      listEquals(other.permissions, permissions);
-  }
+  static const UserRoleWOUserInfo empty = UserRoleWOUserInfo(id: '', name: '', roleDesc: '', group: UserGroupWORoles.empty, permissions: []);
+
+  bool get isEmpty => this == UserRoleWOUserInfo.empty;
+
+  bool get isNotEmpty => this != UserRoleWOUserInfo.empty;
 
   @override
-  int get hashCode {
-    return id.hashCode ^
-      name.hashCode ^
-      roleDesc.hashCode ^
-      group.hashCode ^
-      permissions.hashCode;
+  List<Object?> get props {
+    return [
+      id,
+      name,
+      roleDesc,
+      group,
+      permissions,
+    ];
   }
 }

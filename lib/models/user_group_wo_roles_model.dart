@@ -2,13 +2,14 @@
 import 'dart:convert';
 
 import 'package:dart_appwrite/models.dart';
+import 'package:equatable/equatable.dart';
 
-class UserGroupWORoles {
-  String id;
-  String name;
-  String? groupDesc;
+class UserGroupWORoles extends Equatable {
+  final String id;
+  final String name;
+  final String? groupDesc;
 
-  UserGroupWORoles({
+  const UserGroupWORoles({
     required this.id,
     required this.name,
     this.groupDesc,
@@ -64,16 +65,12 @@ class UserGroupWORoles {
   @override
   String toString() => 'UserGroupWORoles(id: $id, name: $name, groupDesc: $groupDesc)';
 
-  @override
-  bool operator ==(covariant UserGroupWORoles other) {
-    if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.name == name &&
-      other.groupDesc == groupDesc;
-  }
+  static const UserGroupWORoles empty = UserGroupWORoles(id: '', name: '', groupDesc: '');
+
+  bool get isEmpty => this == UserGroupWORoles.empty;
+
+  bool get isNotEmpty => this != UserGroupWORoles.empty;
 
   @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ groupDesc.hashCode;
+  List<Object?> get props => [id, name, groupDesc];
 }

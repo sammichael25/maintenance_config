@@ -2,16 +2,17 @@
 import 'dart:convert';
 
 import 'package:dart_appwrite/models.dart';
+import 'package:equatable/equatable.dart';
+
 import 'package:maintenance_config/models/user_role_wo_user_info_model.dart';
 
+class UserInfoBase extends Equatable {
 
+  final String id;
+  final String workstationIp;
+  final UserRoleWOUserInfo role;
 
-class UserInfoBase {
-  String id;
-  String workstationIp;
-  UserRoleWOUserInfo role;
-
-  UserInfoBase({
+  const UserInfoBase({
     required this.id,
     required this.workstationIp,
     required this.role,
@@ -67,16 +68,12 @@ class UserInfoBase {
   @override
   String toString() => 'UserInfoBase(id: $id, workstationIp: $workstationIp, role: $role)';
 
-  @override
-  bool operator ==(covariant UserInfoBase other) {
-    if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.workstationIp == workstationIp &&
-      other.role == role;
-  }
+  static const UserInfoBase empty = UserInfoBase(id: '', workstationIp: '', role: UserRoleWOUserInfo.empty);
+
+  bool get isEmpty => this == UserInfoBase.empty;
+
+  bool get isNotEmpty => this != UserInfoBase.empty;
 
   @override
-  int get hashCode => id.hashCode ^ workstationIp.hashCode ^ role.hashCode;
+  List<Object> get props => [id, workstationIp, role];
 }

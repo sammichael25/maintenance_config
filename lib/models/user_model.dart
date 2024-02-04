@@ -1,19 +1,21 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
+
 import 'package:maintenance_config/models/user_info_base_model.dart';
 
+class UserModel extends Equatable {
 
-class UserModel {
-  String userDn;
-  String email;
-  String fname;
-  String lname;
-  String? title;
-  String? ipPhone;
-  UserInfoBase userInfo;
+  final String userDn;
+  final  String email;
+  final  String fname;
+  final  String lname;
+  final  String? title;
+  final  String? ipPhone;
+  final  UserInfoBase userInfo;
   
-  UserModel({
+  const UserModel({
     required this.userDn,
     required this.email,
     required this.fname,
@@ -76,28 +78,22 @@ class UserModel {
     return 'UserModel(userDn: $userDn, email: $email, fname: $fname, lname: $lname, title: $title, ipPhone: $ipPhone, userInfo: $userInfo)';
   }
 
-  @override
-  bool operator ==(covariant UserModel other) {
-    if (identical(this, other)) return true;
-  
-    return 
-      other.userDn == userDn &&
-      other.email == email &&
-      other.fname == fname &&
-      other.lname == lname &&
-      other.title == title &&
-      other.ipPhone == ipPhone &&
-      other.userInfo == userInfo;
-  }
+  static const UserModel empty = UserModel(userDn: '', email: '', fname: '', lname: '', title: '', ipPhone: '', userInfo: UserInfoBase.empty);
+
+  bool get isEmpty => this == UserModel.empty;
+
+  bool get isNotEmpty => this != UserModel.empty;
 
   @override
-  int get hashCode {
-    return userDn.hashCode ^
-      email.hashCode ^
-      fname.hashCode ^
-      lname.hashCode ^
-      title.hashCode ^
-      ipPhone.hashCode ^
-      userInfo.hashCode;
+  List<Object?> get props {
+    return [
+      userDn,
+      email,
+      fname,
+      lname,
+      title,
+      ipPhone,
+      userInfo,
+    ];
   }
 }
