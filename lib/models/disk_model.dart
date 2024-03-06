@@ -8,8 +8,8 @@ class DiskModel extends Equatable {
   final String id;
   final int driveType;
   final String letter;
-  final String freeSpace;
-  final String size;
+  final double freeSpace;
+  final double size;
   final String? name;
 
   const DiskModel({
@@ -33,7 +33,7 @@ class DiskModel extends Equatable {
     ];
   }
 
-  static const DiskModel empty = DiskModel(id: '', driveType: -1, letter: '', freeSpace: '', size: '', name: '');
+  static const DiskModel empty = DiskModel(id: '', driveType: -1, letter: '', freeSpace: 0, size: 0, name: '');
 
   bool get isEmpty => this == DiskModel.empty;
   bool get isNotEmpty => this != DiskModel.empty;
@@ -42,8 +42,8 @@ class DiskModel extends Equatable {
     String? id,
     int? driveType,
     String? letter,
-    String? freeSpace,
-    String? size,
+    double? freeSpace,
+    double? size,
     ValueGetter<String?>? name,
   }) {
     return DiskModel(
@@ -93,8 +93,8 @@ class DiskModel extends Equatable {
       id: map['\$id'] ?? '',
       driveType: map['driveType']?.toInt() ?? 0,
       letter: map['letter'] ?? '',
-      freeSpace: map['freeSpace'] ?? '',
-      size: map['size'] ?? '',
+      freeSpace: map['freeSpace']?.toDouble() ?? 0,
+      size: map['size']?.toDouble() ?? 0,
       name: map['name'],
     );
   }
@@ -104,8 +104,8 @@ class DiskModel extends Equatable {
       id: doc.data['id'] ?? '',
       driveType: doc.data['driveType']?.toInt() ?? 0,
       letter: doc.data['letter'] ?? '',
-      freeSpace: doc.data['freeSpace'] ?? '',
-      size: doc.data['size'] ?? '',
+      freeSpace: doc.data['freeSpace']?.toDouble() ?? 0,
+      size: doc.data['size']?.toDouble() ?? 0,
       name: doc.data['name'],
     );
   }
@@ -115,8 +115,8 @@ class DiskModel extends Equatable {
       id: '',
       driveType: map['DriveType']?.toInt() ?? 0,
       letter: map['Disks'] ?? '',
-      freeSpace: map['FreeDiskSpace'] ?? '',
-      size: map['DisksSize'] ?? '',
+      freeSpace: map['FreeDiskSpace']?.toDouble() ?? 0,
+      size: map['DisksSize']?.toDouble() ?? 0,
       name: map['Name'],
     );
   }
