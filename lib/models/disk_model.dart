@@ -1,13 +1,19 @@
+import 'dart:convert';
+
+import 'package:dart_appwrite/models.dart';
 import 'package:equatable/equatable.dart';
+import 'package:maintenance_config/models/basic_types.dart';
 
 class DiskModel extends Equatable {
+  final String id;
   final int driveType;
   final String letter;
   final String freeSpace;
   final String size;
   final String? name;
 
-  DiskModel({
+  const DiskModel({
+    required this.id,
     required this.driveType,
     required this.letter,
     required this.freeSpace,
@@ -18,6 +24,7 @@ class DiskModel extends Equatable {
   @override
   List<Object?> get props {
     return [
+      id,
       driveType,
       letter,
       freeSpace,
@@ -26,19 +33,100 @@ class DiskModel extends Equatable {
     ];
   }
 
+  static const DiskModel empty = DiskModel(id: '', driveType: -1, letter: '', freeSpace: '', size: '', name: '');
+
+  bool get isEmpty => this == DiskModel.empty;
+  bool get isNotEmpty => this != DiskModel.empty;
+
   DiskModel copyWith({
+    String? id,
     int? driveType,
     String? letter,
     String? freeSpace,
     String? size,
-    String? name,
+    ValueGetter<String?>? name,
   }) {
     return DiskModel(
+      id: id ?? this.id,
       driveType: driveType ?? this.driveType,
       letter: letter ?? this.letter,
       freeSpace: freeSpace ?? this.freeSpace,
       size: size ?? this.size,
-      name: name ?? this.name,
+      name: name != null ? name() : this.name,
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      '\$id': id,
+      'driveType': driveType,
+      'letter': letter,
+      'freeSpace': freeSpace,
+      'size': size,
+      'name': name,
+    };
+  }
+
+  Map<String, dynamic> toDoc() {
+    return {
+      '\$id': id,
+      'driveType': driveType,
+      'letter': letter,
+      'freeSpace': freeSpace,
+      'size': size,
+      'name': name,
+    };
+  }
+
+  Map<String, dynamic> toNewDoc() {
+    return {
+      'driveType': driveType,
+      'letter': letter,
+      'freeSpace': freeSpace,
+      'size': size,
+      'name': name,
+    };
+  }
+
+  factory DiskModel.fromMap(Map<String, dynamic> map) {
+    return DiskModel(
+      id: map['\$id'] ?? '',
+      driveType: map['driveType']?.toInt() ?? 0,
+      letter: map['letter'] ?? '',
+      freeSpace: map['freeSpace'] ?? '',
+      size: map['size'] ?? '',
+      name: map['name'],
+    );
+  }
+
+  factory DiskModel.fromDoc(Document doc) {
+    return DiskModel(
+      id: doc.data['id'] ?? '',
+      driveType: doc.data['driveType']?.toInt() ?? 0,
+      letter: doc.data['letter'] ?? '',
+      freeSpace: doc.data['freeSpace'] ?? '',
+      size: doc.data['size'] ?? '',
+      name: doc.data['name'],
+    );
+  }
+
+  factory DiskModel.fromPS(Map<String, dynamic> map) {
+    return DiskModel(
+      id: '',
+      driveType: map['DriveType']?.toInt() ?? 0,
+      letter: map['Disks'] ?? '',
+      freeSpace: map['FreeDiskSpace'] ?? '',
+      size: map['DisksSize'] ?? '',
+      name: map['Name'],
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory DiskModel.fromJson(String source) => DiskModel.fromMap(json.decode(source));
+
+  @override
+  String toString() {
+    return 'DiskModel(id: $id, driveType: $driveType, letter: $letter, freeSpace: $freeSpace, size: $size, name: $name)';
   }
 }

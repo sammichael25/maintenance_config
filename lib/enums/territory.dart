@@ -5,7 +5,12 @@ enum Territory {
    SX,
    VG,
    SR,
+   SUR,
    KY,
-   BNB,
-   GRE
+   BB,
+   GRE,
+   SUBS,
+   SUB1,
+   SUB2,
+   MULTI
 }

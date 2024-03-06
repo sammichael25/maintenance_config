@@ -1,12 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:dart_appwrite/models.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:maintenance_config/models/certificate_model.dart';
 
 class ApplicationModel extends Equatable {
-  final int id;
+  final String id;
   final String application;
   final String installPath;
   final List<String> logFilesPaths;
@@ -14,7 +15,7 @@ class ApplicationModel extends Equatable {
   final List<String> tempFilesPaths;
   final List<String> configFilesPaths;
   final List<String> xmlConfigFilePath;
-  final List<ApplicationUser> users;
+  final List<UserCredential> users;
   final List<CertificateModel> certificates;
   final List<String> essentialServices;
 
@@ -50,7 +51,7 @@ class ApplicationModel extends Equatable {
   }
 
   static const ApplicationModel empty = ApplicationModel(
-    id: 0,
+    id: '',
     application: '',
     installPath: '',
     logFilesPaths: [],
@@ -67,7 +68,7 @@ class ApplicationModel extends Equatable {
   bool get isNotEmpty => this != ApplicationModel.empty;
 
   ApplicationModel copyWith({
-    int? id,
+    String? id,
     String? application,
     String? installPath,
     List<String>? logFilesPaths,
@@ -75,7 +76,7 @@ class ApplicationModel extends Equatable {
     List<String>? tempFilesPaths,
     List<String>? configFilesPaths,
     List<String>? xmlConfigFilePath,
-    List<ApplicationUser>? users,
+    List<UserCredential>? users,
     List<CertificateModel>? certificates,
     List<String>? essentialServices,
   }) {
@@ -96,7 +97,38 @@ class ApplicationModel extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      '\$id': id,
+      'application': application,
+      'installPath': installPath,
+      'logFilesPaths': logFilesPaths,
+      'ports': ports,
+      'tempFilesPaths': tempFilesPaths,
+      'configFilesPaths': configFilesPaths,
+      'xmlConfigFilePath': xmlConfigFilePath,
+      'users': users.map((x) => x.toMap()).toList(),
+      'certificates': certificates.map((x) => x.toMap()).toList(),
+      'essentialServices': essentialServices,
+    };
+  }
+
+  Map<String, dynamic> toDoc() {
+    return {
+      '\$id': id,
+      'application': application,
+      'installPath': installPath,
+      'logFilesPaths': logFilesPaths,
+      'ports': ports,
+      'tempFilesPaths': tempFilesPaths,
+      'configFilesPaths': configFilesPaths,
+      'xmlConfigFilePath': xmlConfigFilePath,
+      'users': users.map((x) => x.toMap()).toList(),
+      'certificates': certificates.map((x) => x.toMap()).toList(),
+      'essentialServices': essentialServices,
+    };
+  }
+
+  Map<String, dynamic> toNewDoc() {
+    return {
       'application': application,
       'installPath': installPath,
       'logFilesPaths': logFilesPaths,
@@ -120,9 +152,25 @@ class ApplicationModel extends Equatable {
       tempFilesPaths: List<String>.from(map['tempFilesPaths']),
       configFilesPaths: List<String>.from(map['configFilesPaths']),
       xmlConfigFilePath: List<String>.from(map['xmlConfigFilePath']),
-      users: List<ApplicationUser>.from(map['users'].map((x) => ApplicationUser.fromMap(x))),
+      users: List<UserCredential>.from(map['users'].map((x) => UserCredential.fromMap(x))),
       certificates: List<CertificateModel>.from(map['certificates'].map((x) => CertificateModel.fromMap(x))),
       essentialServices: List<String>.from(map['essentialServices']),
+    );
+  }
+
+  factory ApplicationModel.fromDoc(Document doc) {
+    return ApplicationModel(
+      id: doc.$id,
+      application: doc.data['application'] ?? '',
+      installPath: doc.data['installPath'] ?? '',
+      logFilesPaths: List<String>.from(doc.data['logFilesPaths']),
+      ports: List<int>.from(doc.data['ports']),
+      tempFilesPaths: List<String>.from(doc.data['tempFilesPaths']),
+      configFilesPaths: List<String>.from(doc.data['configFilesPaths']),
+      xmlConfigFilePath: List<String>.from(doc.data['xmlConfigFilePath']),
+      users: List<UserCredential>.from(doc.data['users'].map((x) => UserCredential.fromMap(x))),
+      certificates: List<CertificateModel>.from(doc.data['certificates'].map((x) => CertificateModel.fromMap(x))),
+      essentialServices: List<String>.from(doc.data['essentialServices']),
     );
   }
 
@@ -136,20 +184,29 @@ class ApplicationModel extends Equatable {
   }
 }
 
-class ApplicationUser extends Equatable {
+class UserCredential extends Equatable {
+  final String id;
   final String userName;
   final String password;
 
-  ApplicationUser({
+  const UserCredential({
+    required this.id,
     required this.userName,
     required this.password,
   });
 
-  ApplicationUser copyWith({
+  static const UserCredential empty = UserCredential(id: '', userName: '', password: '');
+
+  bool get isEmpty => this == UserCredential.empty;
+  bool get isNotEmpty => this != UserCredential.empty;
+
+  UserCredential copyWith({
+    String? id,
     String? userName,
     String? password,
   }) {
-    return ApplicationUser(
+    return UserCredential(
+      id: id ?? this.id,
       userName: userName ?? this.userName,
       password: password ?? this.password,
     );
@@ -157,25 +214,50 @@ class ApplicationUser extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
+      '\$id': id,
       'userName': userName,
       'password': password,
     };
   }
 
-  factory ApplicationUser.fromMap(Map<String, dynamic> map) {
-    return ApplicationUser(
+  Map<String, dynamic> toDoc() {
+    return {
+      '\$id': id,
+      'userName': userName,
+      'password': password,
+    };
+  }
+
+  Map<String, dynamic> toNewDoc() {
+    return {
+      'userName': userName,
+      'password': password,
+    };
+  }
+
+  factory UserCredential.fromMap(Map<String, dynamic> map) {
+    return UserCredential(
+      id: map['\$id'] ?? '',
       userName: map['userName'] ?? '',
       password: map['password'] ?? '',
     );
   }
 
+  factory UserCredential.fromDoc(Document doc) {
+    return UserCredential(
+      id: doc.$id,
+      userName: doc.data['userName'] ?? '',
+      password: doc.data['password'] ?? '',
+    );
+  }
+
   String toJson() => json.encode(toMap());
 
-  factory ApplicationUser.fromJson(String source) => ApplicationUser.fromMap(json.decode(source));
+  factory UserCredential.fromJson(String source) => UserCredential.fromMap(json.decode(source));
 
   @override
-  String toString() => 'ApplicationUser(userName: $userName, password: $password)';
+  String toString() => 'UserCredential(id: $id, userName: $userName, password: $password)';
 
   @override
-  List<Object> get props => [userName, password];
+  List<Object> get props => [id, userName, password];
 }
