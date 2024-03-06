@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 
 class PatchModel extends Equatable {
   final String id;
-  final int kBNumber;
+  final String kBNumber;
   final String description;
   final DateTime installedDateTime;
 
@@ -20,14 +20,14 @@ class PatchModel extends Equatable {
   @override
   List<Object> get props => [id, kBNumber, description, installedDateTime];
 
-  static PatchModel empty = PatchModel(id: '', kBNumber: 0, description: '', installedDateTime: DateTime.now());
+  static PatchModel empty = PatchModel(id: '', kBNumber: '', description: '', installedDateTime: DateTime.now());
 
   bool get isEmpty => this == PatchModel.empty;
   bool get isNotEmpty => this != PatchModel.empty;
 
   PatchModel copyWith({
     String? id,
-    int? kBNumber,
+    String? kBNumber,
     String? title,
     String? description,
     DateTime? installedDateTime,
@@ -69,7 +69,7 @@ class PatchModel extends Equatable {
   factory PatchModel.fromMap(Map<String, dynamic> map) {
     return PatchModel(
       id: map['\$id'] ?? '',
-      kBNumber: map['kBNumber']?.toInt() ?? 0,
+      kBNumber: map['kBNumber'] ?? '',
       description: map['description'] ?? '',
       installedDateTime: DateTime.fromMillisecondsSinceEpoch(map['installedDateTime']),
     );
@@ -78,7 +78,7 @@ class PatchModel extends Equatable {
   factory PatchModel.fromDoc(Document doc) {
     return PatchModel(
       id: doc.$id,
-      kBNumber: doc.data['kBNumber']?.toInt() ?? 0,
+      kBNumber: doc.data['kBNumber'] ?? '',
       description: doc.data['description'] ?? '',
       installedDateTime: DateTime.fromMillisecondsSinceEpoch(doc.data['installedDateTime']),
     );
@@ -87,7 +87,7 @@ class PatchModel extends Equatable {
   factory PatchModel.fromPS(Map<String, dynamic> map) {
     return PatchModel(
       id: '',
-      kBNumber: map['HotFixID']?.toInt() ?? 0,
+      kBNumber: map['HotFixID'] ?? '',
       description: map['Description'] ?? '',
       installedDateTime: DateFormat('MM/dd/yyyy hh:mm:ss').parse(map['InstalledOn']),
     );
