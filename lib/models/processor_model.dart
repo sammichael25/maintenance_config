@@ -10,7 +10,7 @@ class ProcessorModel extends Equatable {
   final int numberOfCores;
   final String processorId;
   final String processorManufacturer;
-  final String processorMaxClockSpeed;
+  final int processorMaxClockSpeed;
   final int currentUsage;
   
   const ProcessorModel({
@@ -38,7 +38,7 @@ class ProcessorModel extends Equatable {
     ];
   }
 
-  static const ProcessorModel empty = ProcessorModel(id: '', processor: '', numberOfLogicalProcessors: 0, numberOfCores: 0, processorId: '', processorManufacturer: '', processorMaxClockSpeed: '', currentUsage: 0);
+  static const ProcessorModel empty = ProcessorModel(id: '', processor: '', numberOfLogicalProcessors: 0, numberOfCores: 0, processorId: '', processorManufacturer: '', processorMaxClockSpeed: 0, currentUsage: 0);
 
   bool get isEmpty => this == ProcessorModel.empty;
   bool get isNotEmpty => this != ProcessorModel.empty;
@@ -50,7 +50,7 @@ class ProcessorModel extends Equatable {
     int? numberOfCores,
     String? processorId,
     String? processorManufacturer,
-    String? processorMaxClockSpeed,
+    int? processorMaxClockSpeed,
     int? currentUsage,
   }) {
     return ProcessorModel(
@@ -111,7 +111,7 @@ class ProcessorModel extends Equatable {
       numberOfCores: map['numberOfCores']?.toInt() ?? 0,
       processorId: map['processorId'] ?? '',
       processorManufacturer: map['processorManufacturer'] ?? '',
-      processorMaxClockSpeed: map['processorMaxClockSpeed'] ?? '',
+      processorMaxClockSpeed: map['processorMaxClockSpeed']?.toInt() ?? 0,
       currentUsage: map['currentUsage']?.toInt() ?? 0,
     );
   }
@@ -124,7 +124,7 @@ class ProcessorModel extends Equatable {
       numberOfCores: doc.data['numberOfCores']?.toInt() ?? 0,
       processorId: doc.data['processorId'] ?? '',
       processorManufacturer: doc.data['processorManufacturer'] ?? '',
-      processorMaxClockSpeed: doc.data['processorMaxClockSpeed'] ?? '',
+      processorMaxClockSpeed: doc.data['processorMaxClockSpeed']?.toInt() ?? 0,
       currentUsage: doc.data['currentUsage']?.toInt() ?? 0,
     );
   }
@@ -137,7 +137,7 @@ class ProcessorModel extends Equatable {
       numberOfCores: map['NumberOfCores']?.toInt() ?? 0,
       processorId: map['ProcessorId'] ?? '',
       processorManufacturer: map['ProcessorManufacturer'] ?? '',
-      processorMaxClockSpeed: map['ProcessorMaxClockSpeed'] ?? '',
+      processorMaxClockSpeed: map['ProcessorMaxClockSpeed']?.toInt() ?? 0,
       currentUsage: 0,
     );
   }
