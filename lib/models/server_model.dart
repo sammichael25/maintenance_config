@@ -460,7 +460,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       patches: List<PatchModel>.from(map['InstalledPatches']?.map((x) => PatchModel.fromPS(x))),
       domainUsers: <UserCredential>[],
       territory: Territory.values.firstWhere((e) => e.toString() == 'Territory.${getTerritory(map['SystemName'])}'),
-      system: System.values.firstWhere((e) => e.toString() == 'System.${getSystem(map['SystemName'])}'),
+      system: getSystem(map['SystemName']),
       serverClass: ServerClass.values.firstWhere((e) => e.toString() == 'ServerClass.${getClass(map['SystemName'])}'),
       serverType: ServerType.values.firstWhere((e) => e.toString() == 'ServerType.${getType(map['SystemName'])}'),
       backupPaths: [],
@@ -496,44 +496,44 @@ String getTerritory(String serverName) {
   }
 }
 
-String getSystem(String serverName) {
+System getSystem(String serverName) {
   Set<String> segments = serverName.split('-').map((e) => e.toLowerCase()).toSet();
   Set<String> foundSystem = segments.intersection(System.values.map((e) => e.name.toLowerCase()).toSet());
   if (foundSystem.isNotEmpty) {
     String system = foundSystem.first;
     if (system == 'icbanking' || system == 'icbnk' || system == 'icbk') {
-      return System.ICBanking.name.toUpperCase();
+      return System.ICBANKING;
     }
     if (system == 'phoenix' || system == 'phx') {
-      return System.Phoenix.name.toUpperCase();
+      return System.PHOENIX;
     }
     if (system == 'internetbanking' || system == 'ib' || system == 'ibmb') {
-      return System.InternetBanking.name.toUpperCase();
+      return System.INTERNETBANKING;
     }
     if (system == 'entrust' || system == 'idg') {
-      return System.Entrust.name.toUpperCase();
+      return System.ENTRUST;
     }
     if (system == 'cardwizard' || system == 'cardwiz' || system == 'crdwiz' || system == 'wiz') {
-      return System.CardWizard.name.toUpperCase();
+      return System.CARDWIZARD;
     }
     if (system == 'paybank' || system == 'pbnk') {
-      return System.PayBank.name.toUpperCase();
+      return System.PAYBANK;
     }
     if (system == 'paycorp' || system == 'pcor' || system == 'pcrp') {
-      return System.PayCorp.name.toUpperCase();
+      return System.PAYCORP;
     }
     if (system == 'dc' || system == 'prodtt') {
-      return System.DC.name.toUpperCase();
+      return System.DC;
     }
     if (system == 'crystalreports' || system == 'crystal' || system == 'cr') {
-      return System.CrystalReports.name.toUpperCase();
+      return System.CRYSTALREPORTS;
     }
     if (system == 'pst' || system == 'ps') {
-      return System.PST.name.toUpperCase();
+      return System.PST;
     }
-    return system.toUpperCase();
+    return System.values.firstWhere((element) => element.name == system.toUpperCase());
   } else {
-    return System.UNKNOWN.name.toUpperCase();
+    return System.UNKNOWN;
   }
 }
 

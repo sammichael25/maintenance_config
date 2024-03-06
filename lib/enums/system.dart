@@ -1,18 +1,18 @@
 enum System {
-  Phoenix,//
+  PHOENIX,//
   PHX,
-  ICBanking,//
+  ICBANKING,//
   ICBNK,
   ICBK,
   SWX,
-  InternetBanking,//
+  INTERNETBANKING,//
   IB,
   IBMB,
-  Entrust,//
+  ENTRUST,//
   IDG,
   ASV,
   DSX,
-  CardWizard,//
+  CARDWIZARD,//
   CARDWIZ,
   CRDWIZ,
   WIZ,
@@ -20,14 +20,14 @@ enum System {
   ACE,
   ESB,
   AML,
-  MediaServer,
-  PayBank,//
+  MEDIASERVER,
+  PAYBANK,//
   PBNK,
-  PayCorp,//
+  PAYCORP,//
   PCOR,
   PCRP,
-  PinGen,
-  Sage,
+  PINGEN,
+  SAGE,
   STP,
   TLM,
   TNMS,
@@ -36,13 +36,13 @@ enum System {
   WSUS,
   IIB,
   HRIS,
-  FraudOne,
-  SignPlus,
+  FRAUDONE,
+  SIGNPLUS,
   ECM,
-  CardConversion,
+  CARDCONVERSION,
   BPMS,
-  BatchIO,
-  ManageEngine,
+  BATCHIO,
+  MANAGEENGINE,
   DC,//
   PRODTT,
   AA,
@@ -51,7 +51,7 @@ enum System {
   APER,
   BI,
   CDA,
-  CrystalReports,//
+  CRYSTALREPORTS,//
   CRYSTAL,
   CR,
   DCAP,
