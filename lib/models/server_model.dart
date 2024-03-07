@@ -30,8 +30,8 @@ abstract class ServerModel with EquatableMixin {
   final String motherboardProductNumber;
   final List<ProcessorModel> processors;
   final List<MemoryModel> memory;
-  final int memoryUsedCapacity;
-  final int memoryMaxAllowedCapacity;
+  final double memoryUsedCapacity;
+  final double memoryMaxAllowedCapacity;
   final List<DiskModel> disks;
   final List<PatchModel> patches;
   final String? description;
@@ -178,8 +178,8 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
     String? motherboardProductNumber,
     List<ProcessorModel>? processors,
     List<MemoryModel>? memory,
-    int? memoryUsedCapacity,
-    int? memoryMaxAllowedCapacity,
+    double? memoryUsedCapacity,
+    double? memoryMaxAllowedCapacity,
     List<DiskModel>? disks,
     List<PatchModel>? patches,
     ValueGetter<String?>? description,
