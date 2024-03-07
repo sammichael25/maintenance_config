@@ -164,6 +164,31 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
     ];
   }
 
+  static const WindowsServerModel empty = WindowsServerModel(
+      id: '',
+      name: '',
+      ip: '',
+      system: System.UNKNOWN,
+      serverClass: ServerClass.UNKNOWN,
+      serverType: ServerType.UNKNOWN,
+      dataCenter: ServerDataCenter.UNKNOWN,
+      os: '',
+      osBuild: '',
+      osVersion: '',
+      motherboardManufacter: '',
+      motherboardSerial: '',
+      motherboardProductNumber: '',
+      processors: [],
+      memory: [],
+      memoryUsedCapacity: 0.0,
+      memoryMaxAllowedCapacity: 0.0,
+      disks: [],
+      patches: [],
+    );
+
+  bool get isEmpty => this == WindowsServerModel.empty;
+  bool get isNotEmpty => this != WindowsServerModel.empty;
+
   WindowsServerModel copyWith({
     String? id,
     String? name,
@@ -572,22 +597,14 @@ String getClass(String serverName) {
   }
   Set<String> foundClass = segments.intersection(ServerClass.values.map((e) => e.name.toLowerCase()).toSet());
   if (foundClass.isNotEmpty) {
-      String dataCenter = foundClass.first;
-      if (dataCenter == 'prim' ||
-          dataCenter == 'prd' ||
-          dataCenter == 'p1' ||
-          dataCenter == 'b1'
-        ) {
-        return ServerClass.PRIM.name.toUpperCase();
-      }
-      if (dataCenter == 'stby' ||
-          dataCenter == 'bkup' ||
-          dataCenter == 'p2' ||
-          dataCenter == 'b2'
-        ) {
-        return ServerClass.STBY.name.toUpperCase();
-      }
-      return ServerClass.UNKNOWN.name.toUpperCase();
+    String dataCenter = foundClass.first;
+    if (dataCenter == 'prim' || dataCenter == 'prd' || dataCenter == 'p1' || dataCenter == 'b1') {
+      return ServerClass.PRIM.name.toUpperCase();
+    }
+    if (dataCenter == 'stby' || dataCenter == 'bkup' || dataCenter == 'p2' || dataCenter == 'b2') {
+      return ServerClass.STBY.name.toUpperCase();
+    }
+    return ServerClass.UNKNOWN.name.toUpperCase();
   } else {
     return ServerClass.UNKNOWN.name.toUpperCase();
   }
@@ -612,19 +629,18 @@ String getDatacenter(String serverName) {
           dataCenter == 'pre2' ||
           dataCenter == 'stby' ||
           dataCenter == 'dbs1' ||
-          dataCenter == 'bkup'
-        ) {
+          dataCenter == 'bkup') {
         return ServerDataCenter.PROD.name.toUpperCase();
       }
       if (dataCenter == 'bcp' || dataCenter == 'b1' || dataCenter == 'b2' || dataCenter == 'b3' || dataCenter == 'b4' || dataCenter == 'b5' || dataCenter == 'b6' || dataCenter == 'dbs2') {
         return ServerDataCenter.BCP.name.toUpperCase();
       }
       return ServerDataCenter.UNKNOWN.name.toUpperCase();
-    }else{
-      if(foundDataCenter.contains('prod')){
+    } else {
+      if (foundDataCenter.contains('prod')) {
         return ServerDataCenter.PROD.name.toUpperCase();
       }
-      if(foundDataCenter.contains('bcp')){
+      if (foundDataCenter.contains('bcp')) {
         return ServerDataCenter.BCP.name.toUpperCase();
       }
       return ServerDataCenter.UNKNOWN.name.toUpperCase();
