@@ -595,6 +595,9 @@ String getClass(String serverName) {
   if (segments.last == '2') {
     return ServerClass.STBY.name.toUpperCase();
   }
+  if (segments.last == 'pre' || segments.last == 'pre1' || segments.last == 'pre2') {
+    return ServerClass.TEST.name.toUpperCase();
+  }
   Set<String> foundClass = segments.intersection(ServerClass.values.map((e) => e.name.toLowerCase()).toSet());
   if (foundClass.isNotEmpty) {
     String dataCenter = foundClass.first;
