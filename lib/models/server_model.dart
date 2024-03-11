@@ -384,6 +384,29 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
     };
   }
 
+  Map<String, dynamic> toNewDocFromPS() {
+    return {
+      'name': name,
+      'ip': ip,
+      'tier': tier.name,
+      'dataCenter': dataCenter.name,
+      'os': os,
+      'osBuild': osBuild,
+      'osVersion': osVersion,
+      'motherboardManufacter': motherboardManufacter,
+      'motherboardSerial': motherboardSerial,
+      'motherboardProductNumber': motherboardProductNumber,
+      'memoryUsedCapacity': memoryUsedCapacity,
+      'memoryMaxAllowedCapacity': memoryMaxAllowedCapacity,
+      'domain': domain,
+      'domainUsers': domainUsers.map((x) => x.toMap()).toList(),
+      'territory': territory.name,
+      'system': system.name,
+      'serverClass': serverClass.name,
+      'serverType': serverType.name,
+    };
+  }
+
   factory WindowsServerModel.fromMap(Map<String, dynamic> map) {
     return WindowsServerModel(
       id: map['\$id'],
