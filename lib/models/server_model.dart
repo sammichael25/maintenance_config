@@ -464,7 +464,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
     );
   }
 
-  factory WindowsServerModel.fromPS(Map<String, dynamic> map) {
+  factory WindowsServerModel.fromPSFull(Map<String, dynamic> map) {
     return WindowsServerModel(
       id: '',
       name: map['SystemName'],
@@ -492,6 +492,27 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       mediaServerPaths: [],
       essentialServices: [],
       applications: <ApplicationModel>[],
+    );
+  }
+
+  factory WindowsServerModel.fromPSBase(Map<String, dynamic> map) {
+    return WindowsServerModel(
+      id: '',
+      name: map['SystemName'],
+      ip: map['IP'],
+      dataCenter: ServerDataCenter.values.firstWhere((e) => e.toString() == 'ServerDataCenter.${getDatacenter(map['SystemName'])}'),
+      os: map['OS'],
+      osBuild: map['BuildNumber'],
+      osVersion: map['Version'],
+      motherboardManufacter: map['MotherBoardManufacturer'],
+      motherboardSerial: map['MotherBoardSerialNumber'],
+      motherboardProductNumber: map['MotherBoardProductNumber'],
+      memoryUsedCapacity: map['TotalUsedMemoryCapacityGB']?.toDouble() ?? 0.0,
+      memoryMaxAllowedCapacity: map['MaxMemoryCapacityGB']?.toDouble() ?? 0.0,
+      territory: Territory.values.firstWhere((e) => e.toString() == 'Territory.${getTerritory(map['SystemName'])}'),
+      system: getSystem(map['SystemName']),
+      serverClass: ServerClass.values.firstWhere((e) => e.toString() == 'ServerClass.${getClass(map['SystemName'])}'),
+      serverType: ServerType.values.firstWhere((e) => e.toString() == 'ServerType.${getType(map['SystemName'])}'),
     );
   }
 
@@ -653,269 +674,3 @@ String getDatacenter(String serverName) {
   }
 }
 
-// abstract class AIXServerModel extends ServerModel {}
-// abstract class UbuntuServerModel extends ServerModel {}
-
-// class WindowsDatabaseServerModel extends WindowsServerModel {
-//   final String? vip;
-//   final String? vpn;
-//   final List<String> backupPaths;
-//   final String? mediaServerIp;
-//   final List<String> mediaServerPaths;
-//   final List<String> essentialServices;
-//   final int databasePort;
-//   final bool hasTapeDrive;
-//   final List<ApplicationModel> applications;
-
-//   const WindowsDatabaseServerModel({
-//     this.vip,
-//     this.vpn,
-//     required this.backupPaths,
-//     this.mediaServerIp,
-//     required this.mediaServerPaths,
-//     required this.essentialServices,
-//     this.databasePort = 0,
-//     this.hasTapeDrive = false,
-//     required super.id,
-//     required super.name,
-//     required super.ip,
-//     super.tier,
-//     super.desc,
-//     super.location,
-//     required super.serial,
-//     required super.osBuild,
-//     required super.users,
-//     required super.domain,
-//     required super.domainUsers,
-//     required super.territory,
-//     required super.system,
-//     required super.serverClass,
-//     required super.serverType,
-//   });
-
-//   static const WindowsDatabaseServerModel empty = WindowsDatabaseServerModel(
-//       id: 0,
-//       name: '',
-//       ip: '',
-//       tier: ServerTier.three,
-//       serial: '',
-//       osBuild: '',
-//       desc: '',
-//       location: '',
-//       users: [],
-//       domain: 'local',
-//       domainUsers: [],
-//       territory: Territory.TT,
-//       system: System.ManageEngine,
-//       serverClass: ServerClass.test,
-//       serverType: ServerType.application,
-//       vip: '',
-//       vpn: '',
-//       backupPaths: [],
-//       mediaServerIp: '',
-//       mediaServerPaths: [],
-//       essentialServices: [],
-//       databasePort: 0,
-//       hasTapeDrive: false);
-
-//   bool get isEmpty => this == WindowsDatabaseServerModel.empty;
-//   bool get isNotEmpty => this != WindowsDatabaseServerModel.empty;
-
-//   @override
-//   List<Object?> get props => super.props
-//     ..addAll([
-//       vip,
-//       vpn,
-//       backupPaths,
-//       mediaServerIp,
-//       mediaServerPaths,
-//       essentialServices,
-//       databasePort,
-//       hasTapeDrive,
-//     ]);
-// }
-
-// class ApplicationServerModel extends WindowsServerModel {
-//   final List<ApplicationModel> applications;
-
-//   const ApplicationServerModel({
-//     required this.applications,
-//     required super.id,
-//     required super.name,
-//     required super.ip,
-//     super.tier,
-//     super.desc,
-//     super.location,
-//     required super.serial,
-//     required super.osBuild,
-//     required super.users,
-//     required super.domain,
-//     required super.domainUsers,
-//     required super.territory,
-//     required super.system,
-//     required super.serverClass,
-//     required super.serverType,
-//   });
-
-//   static const ApplicationServerModel empty = ApplicationServerModel(
-//     id: 0,
-//     name: '',
-//     ip: '',
-//     tier: ServerTier.three,
-//     serial: '',
-//     osBuild: '',
-//     desc: '',
-//     location: '',
-//     users: [],
-//     domain: 'local',
-//     domainUsers: [],
-//     territory: Territory.TT,
-//     system: System.ManageEngine,
-//     serverClass: ServerClass.test,
-//     serverType: ServerType.application,
-//     applications: [],
-//   );
-
-//   bool get isEmpty => this == ApplicationServerModel.empty;
-//   bool get isNotEmpty => this != ApplicationServerModel.empty;
-
-//   @override
-//   List<Object?> get props => super.props..addAll([applications]);
-// }
-
-// class FileServerModel extends ServerModel with EquatableMixin {
-//   final List<ApplicationModel> applications;
-//   FileServerModel({
-//     required this.applications,
-//     required super.id,
-//     required super.name,
-//     required super.ip,
-//     required super.serial,
-//     required super.osBuild,
-//     required super.username,
-//     required super.password,
-//     required super.domain,
-//   });
-
-//   @override
-//   List<Object> get props => [applications];
-// }
-
-// class WebServerModel extends ServerModel with EquatableMixin {
-//   final List<ApplicationModel> applications;
-//   WebServerModel({
-//     required this.applications,
-//     required super.id,
-//     required super.name,
-//     required super.ip,
-//     required super.serial,
-//     required super.osBuild,
-//     required super.username,
-//     required super.password,
-//     required super.domain,
-//   });
-
-//   @override
-//   List<Object> get props => [applications];
-// }
-
-// class XMServerModel extends ServerModel with EquatableMixin {
-//   final String installPath;
-//   final List<String> xmlConfigFilePath;
-//   final List<String> essentialServices;
-
-//   XMServerModel({
-//     required this.installPath,
-//     required this.xmlConfigFilePath,
-//     required this.essentialServices,
-//     required super.id,
-//     required super.name,
-//     required super.ip,
-//     required super.domain,
-//     required super.serial,
-//     required super.osBuild,
-//     required super.username,
-//     required super.password,
-//   });
-
-//   @override
-//   List<Object> get props => [installPath, xmlConfigFilePath, essentialServices];
-// }
-
-// class MediaServerModel extends WindowsServerModel {
-//   final String? vpn;
-
-//   const MediaServerModel({
-//     this.vpn,
-//     required super.id,
-//     required super.name,
-//     required super.ip,
-//     super.tier,
-//     super.desc,
-//     super.location,
-//     required super.domain,
-//     required super.serial,
-//     required super.osBuild,
-//     required super.users,
-//     required super.domainUsers,
-//     required super.territory,
-//     required super.system,
-//     required super.serverClass,
-//     required super.serverType,
-//   });
-
-//   static const MediaServerModel empty = MediaServerModel(
-//     id: 0,
-//     name: '',
-//     ip: '',
-//     tier: ServerTier.three,
-//     serial: '',
-//     osBuild: '',
-//     desc: '',
-//     location: '',
-//     users: [],
-//     domain: 'local',
-//     domainUsers: [],
-//     territory: Territory.TT,
-//     system: System.ManageEngine,
-//     serverClass: ServerClass.test,
-//     serverType: ServerType.application,
-//     vpn: '',
-//   );
-
-//   bool get isEmpty => this == MediaServerModel.empty;
-//   bool get isNotEmpty => this != MediaServerModel.empty;
-
-//   @override
-//   List<Object?> get props => super.props..addAll([vpn]);
-// }
-
-// class ESXIHostServerModel extends ServerModel {
-//   List<VirtualMachineModel> virtualMachines;
-//   ESXIHostServerModel({
-//     required this.virtualMachines,
-//     required super.id,
-//     required super.name,
-//     required super.ip,
-//     required super.domain,
-//     required super.serial,
-//     required super.osBuild,
-//     required super.username,
-//     required super.password,
-//   });
-// }
-
-// class VirtualMachineModel extends Equatable {
-//   final String id;
-//   final String name;
-//   final String ip;
-
-//   VirtualMachineModel({
-//     required this.id,
-//     required this.name,
-//     required this.ip,
-//   });
-
-//   @override
-//   List<Object> get props => [id, name, ip];
-// }
