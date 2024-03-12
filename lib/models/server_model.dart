@@ -398,7 +398,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       'memory_max_allowed_capacity': memoryMaxAllowedCapacity,
       'domain': domain,
       'tier': tier.name,
-      'dataCenter': dataCenter.name,
+      'data_center': dataCenter.name,
       'territory': territory.name,
       'system': system.name,
       'server_class': serverClass.name,
