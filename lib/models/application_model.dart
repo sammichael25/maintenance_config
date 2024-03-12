@@ -185,7 +185,7 @@ class ApplicationModel extends Equatable {
 }
 
 class UserCredential extends Equatable {
-  final String id;
+  final int id;
   final String userName;
   final String password;
 
@@ -195,13 +195,13 @@ class UserCredential extends Equatable {
     required this.password,
   });
 
-  static const UserCredential empty = UserCredential(id: '', userName: '', password: '');
+  static const UserCredential empty = UserCredential(id: -1, userName: '', password: '');
 
   bool get isEmpty => this == UserCredential.empty;
   bool get isNotEmpty => this != UserCredential.empty;
 
   UserCredential copyWith({
-    String? id,
+    int? id,
     String? userName,
     String? password,
   }) {
@@ -214,22 +214,7 @@ class UserCredential extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
-      '\$id': id,
-      'userName': userName,
-      'password': password,
-    };
-  }
-
-  Map<String, dynamic> toDoc() {
-    return {
-      '\$id': id,
-      'userName': userName,
-      'password': password,
-    };
-  }
-
-  Map<String, dynamic> toNewDoc() {
-    return {
+      'id': id,
       'userName': userName,
       'password': password,
     };
@@ -237,17 +222,33 @@ class UserCredential extends Equatable {
 
   factory UserCredential.fromMap(Map<String, dynamic> map) {
     return UserCredential(
-      id: map['\$id'] ?? '',
+      id: map['id'] ?? -1,
       userName: map['userName'] ?? '',
       password: map['password'] ?? '',
     );
   }
+  
+  Map<String, dynamic> toDoc() {
+    return {
+      'id': id,
+      'user_name': userName,
+      'password': password,
+    };
+  }
 
-  factory UserCredential.fromDoc(Document doc) {
+  Map<String, dynamic> toNewDoc() {
+    return {
+      'user_name': userName,
+      'password': password,
+    };
+  }
+
+
+  factory UserCredential.fromDoc(Map<String, dynamic> map) {
     return UserCredential(
-      id: doc.$id,
-      userName: doc.data['userName'] ?? '',
-      password: doc.data['password'] ?? '',
+      id: map['id'],
+      userName: map['user_name'] ?? '',
+      password: map['password'] ?? '',
     );
   }
 
