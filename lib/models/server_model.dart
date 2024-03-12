@@ -17,7 +17,7 @@ import 'package:maintenance_config/models/patch_model.dart';
 import 'package:maintenance_config/models/processor_model.dart';
 
 abstract class ServerModel with EquatableMixin {
-  final String id;
+  final int id;
   final String name;
   final String ip;
   final ServerTier tier;
@@ -165,7 +165,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
   }
 
   static const WindowsServerModel empty = WindowsServerModel(
-      id: '',
+      id: -1,
       name: '',
       ip: '',
       system: System.UNKNOWN,
@@ -190,7 +190,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
   bool get isNotEmpty => this != WindowsServerModel.empty;
 
   WindowsServerModel copyWith({
-    String? id,
+    int? id,
     String? name,
     String? ip,
     ServerTier? tier,
@@ -267,7 +267,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
 
   Map<String, dynamic> toMap() {
     return {
-      '\$id': id,
+      'id': id,
       'name': name,
       'description': description,
       'location': location,
@@ -307,7 +307,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
 
   Map<String, dynamic> toDoc() {
     return {
-      '\$id': id,
+      'id': id,
       'name': name,
       'description': description,
       'location': location,
@@ -386,24 +386,24 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
 
   Map<String, dynamic> toNewDocFromPS() {
     return {
-      'name': name,
       'ip': ip,
+      'name': name,
+      'os': os,
+      'os_build': osBuild,
+      'os_version': osVersion,
+      'motherboard_manufacter': motherboardManufacter,
+      'motherboard_serial': motherboardSerial,
+      'motherboard_product_number': motherboardProductNumber,
+      'memory_used_capacity': memoryUsedCapacity,
+      'memory_max_allowed_capacity': memoryMaxAllowedCapacity,
+      'domain': domain,
       'tier': tier.name,
       'dataCenter': dataCenter.name,
-      'os': os,
-      'osBuild': osBuild,
-      'osVersion': osVersion,
-      'motherboardManufacter': motherboardManufacter,
-      'motherboardSerial': motherboardSerial,
-      'motherboardProductNumber': motherboardProductNumber,
-      'memoryUsedCapacity': memoryUsedCapacity,
-      'memoryMaxAllowedCapacity': memoryMaxAllowedCapacity,
-      'domain': domain,
-      'domainUsers': domainUsers.map((x) => x.toMap()).toList(),
       'territory': territory.name,
       'system': system.name,
-      'serverClass': serverClass.name,
-      'serverType': serverType.name,
+      'server_class': serverClass.name,
+      'server_type': serverType.name,
+      'domain_users': domainUsers.map((x) => x.id).toList(),
     };
   }
 
@@ -447,49 +447,49 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
     );
   }
 
-  factory WindowsServerModel.fromDoc(Document doc) {
-    return WindowsServerModel(
-      id: doc.$id,
-      name: doc.data['name'],
-      description: doc.data['description'],
-      location: doc.data['location'],
-      ip: doc.data['ip'],
-      tier: ServerTier.values.firstWhere((e) => e.toString() == 'ServerTier.${doc.data['tier']}'),
-      dataCenter: ServerDataCenter.values.firstWhere((e) => e.toString() == 'ServerDataCenter.${doc.data['dataCenter']}'),
-      os: doc.data['os'],
-      osBuild: doc.data['osBuild'],
-      osVersion: doc.data['osVersion'],
-      users: List<UserCredential>.from(doc.data['users']?.map((x) => UserCredential.fromMap(x))),
-      motherboardManufacter: doc.data['motherboardManufacter'],
-      motherboardSerial: doc.data['motherboardSerial'],
-      motherboardProductNumber: doc.data['motherboardProductNumber'],
-      processors: List<ProcessorModel>.from(doc.data['processors']?.map((x) => ProcessorModel.fromMap(x))),
-      memory: List<MemoryModel>.from(doc.data['memory']?.map((x) => MemoryModel.fromMap(x))),
-      memoryUsedCapacity: doc.data['memoryUsedCapacity']?.toDouble() ?? 0.0,
-      memoryMaxAllowedCapacity: doc.data['memoryMaxAllowedCapacity']?.toDouble() ?? 0.0,
-      disks: List<DiskModel>.from(doc.data['disks']?.map((x) => DiskModel.fromMap(x))),
-      patches: List<PatchModel>.from(doc.data['patches']?.map((x) => PatchModel.fromMap(x))),
-      domain: doc.data['domain'] ?? '',
-      domainUsers: List<UserCredential>.from(doc.data['domainUsers']?.map((x) => UserCredential.fromMap(x))),
-      territory: Territory.values.firstWhere((e) => e.toString() == 'Territory.${doc.data['territory']}'),
-      system: System.values.firstWhere((e) => e.toString() == 'System.${doc.data['system']}'),
-      serverClass: ServerClass.values.firstWhere((e) => e.toString() == 'ServerClass.${doc.data['serverClass']}'),
-      serverType: ServerType.values.firstWhere((e) => e.toString() == 'ServerType.${doc.data['serverType']}'),
-      vip: doc.data['vip'],
-      vpn: doc.data['vpn'],
-      backupPaths: List<String>.from(doc.data['backupPaths']),
-      mediaServerIp: doc.data['mediaServerIp'],
-      mediaServerPaths: List<String>.from(doc.data['mediaServerPaths']),
-      essentialServices: List<String>.from(doc.data['essentialServices']),
-      databasePort: doc.data['databasePort']?.toInt() ?? 0,
-      hasTapeDrive: doc.data['hasTapeDrive'] ?? false,
-      applications: List<ApplicationModel>.from(doc.data['applications']?.map((x) => ApplicationModel.fromMap(x))),
-    );
-  }
+  // factory WindowsServerModel.fromDoc(Document doc) {
+  //   return WindowsServerModel(
+  //     id: doc.$id,
+  //     name: doc.data['name'],
+  //     description: doc.data['description'],
+  //     location: doc.data['location'],
+  //     ip: doc.data['ip'],
+  //     tier: ServerTier.values.firstWhere((e) => e.toString() == 'ServerTier.${doc.data['tier']}'),
+  //     dataCenter: ServerDataCenter.values.firstWhere((e) => e.toString() == 'ServerDataCenter.${doc.data['dataCenter']}'),
+  //     os: doc.data['os'],
+  //     osBuild: doc.data['osBuild'],
+  //     osVersion: doc.data['osVersion'],
+  //     users: List<UserCredential>.from(doc.data['users']?.map((x) => UserCredential.fromMap(x))),
+  //     motherboardManufacter: doc.data['motherboardManufacter'],
+  //     motherboardSerial: doc.data['motherboardSerial'],
+  //     motherboardProductNumber: doc.data['motherboardProductNumber'],
+  //     processors: List<ProcessorModel>.from(doc.data['processors']?.map((x) => ProcessorModel.fromMap(x))),
+  //     memory: List<MemoryModel>.from(doc.data['memory']?.map((x) => MemoryModel.fromMap(x))),
+  //     memoryUsedCapacity: doc.data['memoryUsedCapacity']?.toDouble() ?? 0.0,
+  //     memoryMaxAllowedCapacity: doc.data['memoryMaxAllowedCapacity']?.toDouble() ?? 0.0,
+  //     disks: List<DiskModel>.from(doc.data['disks']?.map((x) => DiskModel.fromMap(x))),
+  //     patches: List<PatchModel>.from(doc.data['patches']?.map((x) => PatchModel.fromMap(x))),
+  //     domain: doc.data['domain'] ?? '',
+  //     domainUsers: List<UserCredential>.from(doc.data['domainUsers']?.map((x) => UserCredential.fromMap(x))),
+  //     territory: Territory.values.firstWhere((e) => e.toString() == 'Territory.${doc.data['territory']}'),
+  //     system: System.values.firstWhere((e) => e.toString() == 'System.${doc.data['system']}'),
+  //     serverClass: ServerClass.values.firstWhere((e) => e.toString() == 'ServerClass.${doc.data['serverClass']}'),
+  //     serverType: ServerType.values.firstWhere((e) => e.toString() == 'ServerType.${doc.data['serverType']}'),
+  //     vip: doc.data['vip'],
+  //     vpn: doc.data['vpn'],
+  //     backupPaths: List<String>.from(doc.data['backupPaths']),
+  //     mediaServerIp: doc.data['mediaServerIp'],
+  //     mediaServerPaths: List<String>.from(doc.data['mediaServerPaths']),
+  //     essentialServices: List<String>.from(doc.data['essentialServices']),
+  //     databasePort: doc.data['databasePort']?.toInt() ?? 0,
+  //     hasTapeDrive: doc.data['hasTapeDrive'] ?? false,
+  //     applications: List<ApplicationModel>.from(doc.data['applications']?.map((x) => ApplicationModel.fromMap(x))),
+  //   );
+  // }
 
   factory WindowsServerModel.fromPSFull(Map<String, dynamic> map) {
     return WindowsServerModel(
-      id: '',
+      id: -1,
       name: map['SystemName'],
       ip: map['IP'],
       dataCenter: ServerDataCenter.values.firstWhere((e) => e.toString() == 'ServerDataCenter.${getDatacenter(map['SystemName'])}'),
@@ -520,7 +520,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
 
   factory WindowsServerModel.fromPSBase(Map<String, dynamic> map) {
     return WindowsServerModel(
-      id: '',
+      id: -1,
       name: map['SystemName'],
       ip: map['IP'],
       dataCenter: ServerDataCenter.values.firstWhere((e) => e.toString() == 'ServerDataCenter.${getDatacenter(map['SystemName'])}'),
@@ -536,6 +536,29 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       system: getSystem(map['SystemName']),
       serverClass: ServerClass.values.firstWhere((e) => e.toString() == 'ServerClass.${getClass(map['SystemName'])}'),
       serverType: ServerType.values.firstWhere((e) => e.toString() == 'ServerType.${getType(map['SystemName'])}'),
+    );
+  }
+
+  factory WindowsServerModel.fromDoc(Map<String, dynamic> map) {
+    return WindowsServerModel(
+      id: map['id'],
+      name: map['name'],
+      ip: map['ip'],
+      description: map['description'],
+      location: map['location'],
+      os: map['os'],
+      osBuild: map['os_build'],
+      osVersion: map['os_version'],
+      motherboardManufacter: map['motherboard_manufacturer'],
+      motherboardSerial: map['motherboard_serial'],
+      motherboardProductNumber: map['motherboard_product_number'],
+      memoryUsedCapacity: map['memory_used_capacity']?.toDouble() ?? 0.0,
+      memoryMaxAllowedCapacity: map['memory_max_allowed_capacity']?.toDouble() ?? 0.0,
+      dataCenter: ServerDataCenter.values.firstWhere((e) => e.toString() == 'ServerDataCenter.${getDatacenter(map['data_center'])}'),
+      territory: Territory.values.firstWhere((e) => e.toString() == 'Territory.${getTerritory(map['territory'])}'),
+      system: getSystem(map['system']),
+      serverClass: ServerClass.values.firstWhere((e) => e.toString() == 'ServerClass.${getClass(map['server_class'])}'),
+      serverType: ServerType.values.firstWhere((e) => e.toString() == 'ServerType.${getType(map['server_type'])}'),
     );
   }
 
