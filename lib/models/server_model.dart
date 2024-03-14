@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:dart_appwrite/models.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:maintenance_config/enums/server_class.dart';
