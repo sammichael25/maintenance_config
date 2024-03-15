@@ -543,6 +543,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       id: map['id'],
       name: map['name'],
       ip: map['ip'],
+      vip: map['vip'],
       description: map['description'],
       location: map['location'],
       os: map['os'],
