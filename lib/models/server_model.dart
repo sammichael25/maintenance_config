@@ -24,7 +24,7 @@ abstract class ServerModel with EquatableMixin {
   final String os;
   final String osBuild;
   final String osVersion;
-  final String motherboardManufacter;
+  final String motherboardManufacturer;
   final String motherboardSerial;
   final String motherboardProductNumber;
   final List<ProcessorModel> processors;
@@ -46,7 +46,7 @@ abstract class ServerModel with EquatableMixin {
     required this.os,
     required this.osBuild,
     required this.osVersion,
-    required this.motherboardManufacter,
+    required this.motherboardManufacturer,
     required this.motherboardSerial,
     required this.motherboardProductNumber,
     this.processors = const <ProcessorModel>[],
@@ -71,7 +71,7 @@ abstract class ServerModel with EquatableMixin {
       os,
       osBuild,
       osVersion,
-      motherboardManufacter,
+      motherboardManufacturer,
       motherboardSerial,
       motherboardProductNumber,
       processors,
@@ -130,7 +130,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
     required super.os,
     required super.osBuild,
     required super.osVersion,
-    required super.motherboardManufacter,
+    required super.motherboardManufacturer,
     required super.motherboardSerial,
     required super.motherboardProductNumber,
     super.processors,
@@ -174,7 +174,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       os: '',
       osBuild: '',
       osVersion: '',
-      motherboardManufacter: '',
+      motherboardManufacturer: '',
       motherboardSerial: '',
       motherboardProductNumber: '',
       processors: [],
@@ -197,7 +197,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
     String? os,
     String? osBuild,
     String? osVersion,
-    String? motherboardManufacter,
+    String? motherboardManufacturer,
     String? motherboardSerial,
     String? motherboardProductNumber,
     List<ProcessorModel>? processors,
@@ -237,7 +237,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       osBuild: osBuild ?? this.osBuild,
       osVersion: osVersion ?? this.osVersion,
       users: users ?? this.users,
-      motherboardManufacter: motherboardManufacter ?? this.motherboardManufacter,
+      motherboardManufacturer: motherboardManufacturer ?? this.motherboardManufacturer,
       motherboardSerial: motherboardSerial ?? this.motherboardSerial,
       motherboardProductNumber: motherboardProductNumber ?? this.motherboardProductNumber,
       processors: processors ?? this.processors,
@@ -277,7 +277,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       'osBuild': osBuild,
       'osVersion': osVersion,
       'users': users.map((x) => x.toMap()).toList(),
-      'motherboardManufacter': motherboardManufacter,
+      'motherboardManufacturer': motherboardManufacturer,
       'motherboardSerial': motherboardSerial,
       'motherboardProductNumber': motherboardProductNumber,
       'processors': processors.map((x) => x.toMap()).toList(),
@@ -317,7 +317,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       'osBuild': osBuild,
       'osVersion': osVersion,
       'users': users.map((x) => x.toMap()).toList(),
-      'motherboardManufacter': motherboardManufacter,
+      'motherboardManufacturer': motherboardManufacturer,
       'motherboardSerial': motherboardSerial,
       'motherboardProductNumber': motherboardProductNumber,
       'processors': processors.map((x) => x.toMap()).toList(),
@@ -356,7 +356,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       'osBuild': osBuild,
       'osVersion': osVersion,
       'users': users.map((x) => x.toMap()).toList(),
-      'motherboardManufacter': motherboardManufacter,
+      'motherboardManufacturer': motherboardManufacturer,
       'motherboardSerial': motherboardSerial,
       'motherboardProductNumber': motherboardProductNumber,
       'processors': processors.map((x) => x.toMap()).toList(),
@@ -390,7 +390,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       'os': os,
       'os_build': osBuild,
       'os_version': osVersion,
-      'motherboard_manufacter': motherboardManufacter,
+      'motherboard_manufacturer': motherboardManufacturer,
       'motherboard_serial': motherboardSerial,
       'motherboard_product_number': motherboardProductNumber,
       'memory_used_capacity': memoryUsedCapacity,
@@ -419,7 +419,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       osBuild: map['osBuild'],
       osVersion: map['osVersion'],
       users: List<UserCredential>.from(map['users']?.map((x) => UserCredential.fromMap(x))),
-      motherboardManufacter: map['motherboardManufacter'],
+      motherboardManufacturer: map['motherboardManufacturer'],
       motherboardSerial: map['motherboardSerial'],
       motherboardProductNumber: map['motherboardProductNumber'],
       processors: List<ProcessorModel>.from(map['processors']?.map((x) => ProcessorModel.fromMap(x))),
@@ -459,7 +459,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
   //     osBuild: doc.data['osBuild'],
   //     osVersion: doc.data['osVersion'],
   //     users: List<UserCredential>.from(doc.data['users']?.map((x) => UserCredential.fromMap(x))),
-  //     motherboardManufacter: doc.data['motherboardManufacter'],
+  //     motherboardManufacturer: doc.data['motherboardManufacturer'],
   //     motherboardSerial: doc.data['motherboardSerial'],
   //     motherboardProductNumber: doc.data['motherboardProductNumber'],
   //     processors: List<ProcessorModel>.from(doc.data['processors']?.map((x) => ProcessorModel.fromMap(x))),
@@ -496,7 +496,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       osBuild: map['BuildNumber'],
       osVersion: map['Version'],
       users: <UserCredential>[],
-      motherboardManufacter: map['MotherBoardManufacturer'],
+      motherboardManufacturer: map['MotherBoardManufacturer'],
       motherboardSerial: map['MotherBoardSerialNumber'],
       motherboardProductNumber: map['MotherBoardProductNumber'],
       processors: List<ProcessorModel>.from(map['Processors']?.map((x) => ProcessorModel.fromPS(x))),
@@ -526,7 +526,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       os: map['OS'],
       osBuild: map['BuildNumber'],
       osVersion: map['Version'],
-      motherboardManufacter: map['MotherBoardManufacturer'],
+      motherboardManufacturer: map['MotherBoardManufacturer'],
       motherboardSerial: map['MotherBoardSerialNumber'],
       motherboardProductNumber: map['MotherBoardProductNumber'],
       memoryUsedCapacity: map['TotalUsedMemoryCapacityGB']?.toDouble() ?? 0.0,
@@ -549,7 +549,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       os: map['os'],
       osBuild: map['os_build'],
       osVersion: map['os_version'],
-      motherboardManufacter: map['motherboard_manufacturer'],
+      motherboardManufacturer: map['motherboard_manufacturer'],
       motherboardSerial: map['motherboard_serial'],
       motherboardProductNumber: map['motherboard_product_number'],
       memoryUsedCapacity: map['memory_used_capacity']?.toDouble() ?? 0.0,
@@ -568,7 +568,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
 
   @override
   String toString() {
-    return 'WindowsServerModel(id: $id, name: $name, ip: $ip, tier: $tier, dataCenter: $dataCenter, os: $os, osBuild: $osBuild, osVersion: $osVersion, motherboardManufacter: $motherboardManufacter, motherboardSerial: $motherboardSerial, motherboardProductNumber: $motherboardProductNumber, processors: $processors, memory: $memory, memoryUsedCapacity: $memoryUsedCapacity, memoryMaxAllowedCapacity: $memoryMaxAllowedCapacity, disks: $disks, patches: $patches, description: $description, location: $location, users: $users, domain: $domain, domainUsers: $domainUsers, territory: $territory, system: $system, serverClass: $serverClass, serverType: $serverType, vip: $vip, vpn: $vpn, backupPaths: $backupPaths, mediaServerIp: $mediaServerIp, mediaServerPaths: $mediaServerPaths, essentialServices: $essentialServices, databasePort: $databasePort, hasTapeDrive: $hasTapeDrive, applications: $applications)';
+    return 'WindowsServerModel(id: $id, name: $name, ip: $ip, tier: $tier, dataCenter: $dataCenter, os: $os, osBuild: $osBuild, osVersion: $osVersion, motherboardManufacturer: $motherboardManufacturer, motherboardSerial: $motherboardSerial, motherboardProductNumber: $motherboardProductNumber, processors: $processors, memory: $memory, memoryUsedCapacity: $memoryUsedCapacity, memoryMaxAllowedCapacity: $memoryMaxAllowedCapacity, disks: $disks, patches: $patches, description: $description, location: $location, users: $users, domain: $domain, domainUsers: $domainUsers, territory: $territory, system: $system, serverClass: $serverClass, serverType: $serverType, vip: $vip, vpn: $vpn, backupPaths: $backupPaths, mediaServerIp: $mediaServerIp, mediaServerPaths: $mediaServerPaths, essentialServices: $essentialServices, databasePort: $databasePort, hasTapeDrive: $hasTapeDrive, applications: $applications)';
   }
 }
 
