@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 
 import 'package:maintenance_config/models/user_info_base_model.dart';
 
-class UserModel extends Equatable {
+class AppwriteUserModel extends Equatable {
 
   final String userDn;
   final  String email;
@@ -15,7 +15,7 @@ class UserModel extends Equatable {
   final  String? ipPhone;
   final  UserInfoBase userInfo;
   
-  const UserModel({
+  const AppwriteUserModel({
     required this.userDn,
     required this.email,
     required this.fname,
@@ -25,7 +25,7 @@ class UserModel extends Equatable {
     required this.userInfo,
   });
 
-  UserModel copyWith({
+  AppwriteUserModel copyWith({
     String? userDn,
     String? email,
     String? fname,
@@ -34,7 +34,7 @@ class UserModel extends Equatable {
     String? ipPhone,
     UserInfoBase? userInfo,
   }) {
-    return UserModel(
+    return AppwriteUserModel(
       userDn: userDn ?? this.userDn,
       email: email ?? this.email,
       fname: fname ?? this.fname,
@@ -57,8 +57,8 @@ class UserModel extends Equatable {
     };
   }
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
-    return UserModel(
+  factory AppwriteUserModel.fromMap(Map<String, dynamic> map) {
+    return AppwriteUserModel(
       userDn: map['userDn'] as String,
       email: map['email'] as String,
       fname: map['fname'] as String,
@@ -71,18 +71,18 @@ class UserModel extends Equatable {
 
   String toJson() => json.encode(toMap());
 
-  factory UserModel.fromJson(String source) => UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory AppwriteUserModel.fromJson(String source) => AppwriteUserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
     return 'UserModel(userDn: $userDn, email: $email, fname: $fname, lname: $lname, title: $title, ipPhone: $ipPhone, userInfo: $userInfo)';
   }
 
-  static const UserModel empty = UserModel(userDn: '', email: '', fname: '', lname: '', title: '', ipPhone: '', userInfo: UserInfoBase.empty);
+  static const AppwriteUserModel empty = AppwriteUserModel(userDn: '', email: '', fname: '', lname: '', title: '', ipPhone: '', userInfo: UserInfoBase.empty);
 
-  bool get isEmpty => this == UserModel.empty;
+  bool get isEmpty => this == AppwriteUserModel.empty;
 
-  bool get isNotEmpty => this != UserModel.empty;
+  bool get isNotEmpty => this != AppwriteUserModel.empty;
 
   @override
   List<Object?> get props {
