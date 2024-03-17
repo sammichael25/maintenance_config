@@ -1,20 +1,20 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class FunctionResponse {
+class AppwriteFunctionResponse {
   bool success;
   String message;
   
-  FunctionResponse({
+  AppwriteFunctionResponse({
     required this.success,
     required this.message,
   });
 
-  FunctionResponse copyWith({
+  AppwriteFunctionResponse copyWith({
     bool? success,
     String? message,
   }) {
-    return FunctionResponse(
+    return AppwriteFunctionResponse(
       success: success ?? this.success,
       message: message ?? this.message,
     );
@@ -27,8 +27,8 @@ class FunctionResponse {
     };
   }
 
-  factory FunctionResponse.fromMap(Map<String, dynamic> map) {
-    return FunctionResponse(
+  factory AppwriteFunctionResponse.fromMap(Map<String, dynamic> map) {
+    return AppwriteFunctionResponse(
       success: map['success'] as bool,
       message: map['message'] as String,
     );
@@ -36,13 +36,13 @@ class FunctionResponse {
 
   String toJson() => json.encode(toMap());
 
-  factory FunctionResponse.fromJson(String source) => FunctionResponse.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory AppwriteFunctionResponse.fromJson(String source) => AppwriteFunctionResponse.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'FunctionResponse(success: $success, message: $message)';
+  String toString() => 'AppwriteFunctionResponse(success: $success, message: $message)';
 
   @override
-  bool operator ==(covariant FunctionResponse other) {
+  bool operator ==(covariant AppwriteFunctionResponse other) {
     if (identical(this, other)) return true;
   
     return 
