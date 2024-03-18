@@ -4,8 +4,8 @@ import 'dart:convert';
 import 'package:dart_appwrite/models.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:maintenance_config/models/user_group_wo_roles_model.dart';
-import 'package:maintenance_config/models/user_permission_model.dart';
+import 'package:maintenance_config/models/appwrite/user_group_wo_roles_model.dart';
+import 'package:maintenance_config/models/appwrite/user_permission_model.dart';
 
 class UserRoleWOUserInfo extends Equatable {
   final String id;

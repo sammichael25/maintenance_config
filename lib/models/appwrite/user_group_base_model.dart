@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 import 'package:dart_appwrite/models.dart';
 
-import 'package:maintenance_config/models/user_role_wo_group_n_user_info_model.dart';
+import 'package:maintenance_config/models/appwrite/user_role_wo_group_n_user_info_model.dart';
 
 class UserGroupBase {
   String id;

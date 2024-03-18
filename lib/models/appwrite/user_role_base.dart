@@ -4,9 +4,9 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 import 'package:dart_appwrite/models.dart';
 
-import 'package:maintenance_config/models/user_group_wo_roles_model.dart';
-import 'package:maintenance_config/models/user_info_wo_role_model.dart';
-import 'package:maintenance_config/models/user_permission_model.dart';
+import 'package:maintenance_config/models/appwrite/user_group_wo_roles_model.dart';
+import 'package:maintenance_config/models/appwrite/user_info_wo_role_model.dart';
+import 'package:maintenance_config/models/appwrite/user_permission_model.dart';
 
 class UserRoleBase {
   String id;

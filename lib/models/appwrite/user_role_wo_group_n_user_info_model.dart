@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 import 'package:dart_appwrite/models.dart';
 
-import 'package:maintenance_config/models/user_permission_model.dart';
+import 'package:maintenance_config/models/appwrite/user_permission_model.dart';
 
 class UserRoleWOGroupNUserInfo {
   String id;

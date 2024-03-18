@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-import 'package:maintenance_config/models/user_info_base_model.dart';
+import 'package:maintenance_config/models/appwrite/user_info_base_model.dart';
 
 class AppwriteUserModel extends Equatable {
 
