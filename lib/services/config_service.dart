@@ -2,7 +2,6 @@
 // ignore: library_names
 library ConfigService;
 
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:yaml/yaml.dart';
@@ -79,6 +78,12 @@ class Configs {
   String vulnerabilitiesTable;
   String portsTable;
   String cveTable;
+  String permissionGroupsTable;
+  String permissionsTable;
+  String officesTable;
+  String departmentsTable;
+  String rolesTable;
+  String employeesTable;
 
   Configs({
     required this.host,
@@ -138,189 +143,13 @@ class Configs {
     required this.vulnerabilitiesTable,
     required this.portsTable,
     required this.cveTable,
+    required this.permissionGroupsTable,
+    required this.permissionsTable,
+    required this.officesTable,
+    required this.departmentsTable,
+    required this.rolesTable,
+    required this.employeesTable,
   });
-
-  Configs copyWith({
-    String? host,
-    String? login,
-    String? password,
-    String? port,
-    String? basedn,
-    String? projectId,
-    String? endpoint,
-    String? functionAPIKey,
-    String? databaseId,
-    String? loggingDatabaseId,
-    String? appImagesBucketId,
-    String? loginImageId,
-    String? republicLogoFull,
-    String? republicLogoSmall,
-    String? serversCollectionId,
-    String? checklistCollectionId,
-    String? disksCollectionId,
-    String? cpuCollectionId,
-    String? ramCollectionId,
-    String? networksCollectionId,
-    String? antivirusCollectionId,
-    String? eventsCollectionId,
-    String? servicesCollectionId,
-    String? errorsCollectionId,
-    String? activeDirectoryGroupsCollectionId,
-    String? userInfoCollectionId,
-    String? groupsCollectionId,
-    String? rolesCollectionId,
-    String? permissionsCollectionId,
-    String? applicationInfoCollectionId,
-    String? applicationInfoDocId,
-    String? superAdminUserId,
-    String? superAdminUserEmail,
-    String? superAdminRole,
-    String? superAdminGroup,
-    String? defaultRoleForNewUsers,
-    String? sendEmailVerificationfunctionId,
-    String? loginFunctionId,
-    String? getUserFunctionId,
-    String? getUserEmailFunctionId,
-    String? deleteUserFunctionID,
-    String? searchADUserFunctionID,
-    String? addNewUserFunctionID,
-    String? getAllUsersFunctionID,
-    String? getAllRolesFunctionID,
-    String? getAllGroupsFunctionID,
-    String? getAllPermissionsFunctionID,
-    String? updateUserInfoFunctionID,
-    String? addNewGroupFunctionID,
-    String? updateGroupFunctionID,
-    String? deleteGroupFunctionID,
-    String? supabaseUrl,
-    String? supabaseAnonKey,
-    String? serversTable,
-    String? vulnerabilitiesTable,
-    String? portsTable,
-    String? cveTable,
-  }) {
-    return Configs(
-      host: host ?? this.host,
-      login: login ?? this.login,
-      password: password ?? this.password,
-      port: port ?? this.port,
-      basedn: basedn ?? this.basedn,
-      projectId: projectId ?? this.projectId,
-      endpoint: endpoint ?? this.endpoint,
-      functionAPIKey: functionAPIKey ?? this.functionAPIKey,
-      databaseId: databaseId ?? this.databaseId,
-      loggingDatabaseId: loggingDatabaseId ?? this.loggingDatabaseId,
-      appImagesBucketId: appImagesBucketId ?? this.appImagesBucketId,
-      loginImageId: loginImageId ?? this.loginImageId,
-      republicLogoFull: republicLogoFull ?? this.republicLogoFull,
-      republicLogoSmall: republicLogoSmall ?? this.republicLogoSmall,
-      serversCollectionId: serversCollectionId ?? this.serversCollectionId,
-      checklistCollectionId: checklistCollectionId ?? this.checklistCollectionId,
-      disksCollectionId: disksCollectionId ?? this.disksCollectionId,
-      cpuCollectionId: cpuCollectionId ?? this.cpuCollectionId,
-      ramCollectionId: ramCollectionId ?? this.ramCollectionId,
-      networksCollectionId: networksCollectionId ?? this.networksCollectionId,
-      antivirusCollectionId: antivirusCollectionId ?? this.antivirusCollectionId,
-      eventsCollectionId: eventsCollectionId ?? this.eventsCollectionId,
-      servicesCollectionId: servicesCollectionId ?? this.servicesCollectionId,
-      errorsCollectionId: errorsCollectionId ?? this.errorsCollectionId,
-      activeDirectoryGroupsCollectionId: activeDirectoryGroupsCollectionId ?? this.activeDirectoryGroupsCollectionId,
-      userInfoCollectionId: userInfoCollectionId ?? this.userInfoCollectionId,
-      groupsCollectionId: groupsCollectionId ?? this.groupsCollectionId,
-      rolesCollectionId: rolesCollectionId ?? this.rolesCollectionId,
-      permissionsCollectionId: permissionsCollectionId ?? this.permissionsCollectionId,
-      applicationInfoCollectionId: applicationInfoCollectionId ?? this.applicationInfoCollectionId,
-      applicationInfoDocId: applicationInfoDocId ?? this.applicationInfoDocId,
-      superAdminUserId: superAdminUserId ?? this.superAdminUserId,
-      superAdminUserEmail: superAdminUserEmail ?? this.superAdminUserEmail,
-      superAdminRole: superAdminRole ?? this.superAdminRole,
-      superAdminGroup: superAdminGroup ?? this.superAdminGroup,
-      defaultRoleForNewUsers: defaultRoleForNewUsers ?? this.defaultRoleForNewUsers,
-      sendEmailVerificationfunctionId: sendEmailVerificationfunctionId ?? this.sendEmailVerificationfunctionId,
-      loginFunctionId: loginFunctionId ?? this.loginFunctionId,
-      getUserFunctionId: getUserFunctionId ?? this.getUserFunctionId,
-      getUserEmailFunctionId: getUserEmailFunctionId ?? this.getUserEmailFunctionId,
-      deleteUserFunctionID: deleteUserFunctionID ?? this.deleteUserFunctionID,
-      searchADUserFunctionID: searchADUserFunctionID ?? this.searchADUserFunctionID,
-      addNewUserFunctionID: addNewUserFunctionID ?? this.addNewUserFunctionID,
-      getAllUsersFunctionID: getAllUsersFunctionID ?? this.getAllUsersFunctionID,
-      getAllRolesFunctionID: getAllRolesFunctionID ?? this.getAllRolesFunctionID,
-      getAllGroupsFunctionID: getAllGroupsFunctionID ?? this.getAllGroupsFunctionID,
-      getAllPermissionsFunctionID: getAllPermissionsFunctionID ?? this.getAllPermissionsFunctionID,
-      updateUserInfoFunctionID: updateUserInfoFunctionID ?? this.updateUserInfoFunctionID,
-      addNewGroupFunctionID: addNewGroupFunctionID ?? this.addNewGroupFunctionID,
-      updateGroupFunctionID: updateGroupFunctionID ?? this.updateGroupFunctionID,
-      deleteGroupFunctionID: deleteGroupFunctionID ?? this.deleteGroupFunctionID,
-      supabaseUrl: supabaseUrl ?? this.supabaseUrl,
-      supabaseAnonKey: supabaseAnonKey ?? this.supabaseAnonKey,
-      serversTable: serversTable ?? this.serversTable,
-      vulnerabilitiesTable: vulnerabilitiesTable ?? this.vulnerabilitiesTable,
-      portsTable: portsTable ?? this.portsTable,
-      cveTable: cveTable ?? this.cveTable,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'host': host,
-      'login': login,
-      'password': password,
-      'port': port,
-      'basedn': basedn,
-      'projectId': projectId,
-      'endpoint': endpoint,
-      'functionAPIKey': functionAPIKey,
-      'databaseId': databaseId,
-      'loggingDatabaseId': loggingDatabaseId,
-      'appImagesBucketId': appImagesBucketId,
-      'loginImageId': loginImageId,
-      'republicLogoFull': republicLogoFull,
-      'republicLogoSmall': republicLogoSmall,
-      'serversCollectionId': serversCollectionId,
-      'checklistCollectionId': checklistCollectionId,
-      'disksCollectionId': disksCollectionId,
-      'cpuCollectionId': cpuCollectionId,
-      'ramCollectionId': ramCollectionId,
-      'networksCollectionId': networksCollectionId,
-      'antivirusCollectionId': antivirusCollectionId,
-      'eventsCollectionId': eventsCollectionId,
-      'servicesCollectionId': servicesCollectionId,
-      'errorsCollectionId': errorsCollectionId,
-      'activeDirectoryGroupsCollectionId': activeDirectoryGroupsCollectionId,
-      'userInfoCollectionId': userInfoCollectionId,
-      'groupsCollectionId': groupsCollectionId,
-      'rolesCollectionId': rolesCollectionId,
-      'permissionsCollectionId': permissionsCollectionId,
-      'applicationInfoCollectionId': applicationInfoCollectionId,
-      'applicationInfoDocId': applicationInfoDocId,
-      'superAdminUserId': superAdminUserId,
-      'superAdminUserEmail': superAdminUserEmail,
-      'superAdminRole': superAdminRole,
-      'superAdminGroup': superAdminGroup,
-      'defaultRoleForNewUsers': defaultRoleForNewUsers,
-      'sendEmailVerificationfunctionId': sendEmailVerificationfunctionId,
-      'loginFunctionId': loginFunctionId,
-      'getUserFunctionId': getUserFunctionId,
-      'getUserEmailFunctionId': getUserEmailFunctionId,
-      'deleteUserFunctionID': deleteUserFunctionID,
-      'searchADUserFunctionID': searchADUserFunctionID,
-      'addNewUserFunctionID': addNewUserFunctionID,
-      'getAllUsersFunctionID': getAllUsersFunctionID,
-      'getAllRolesFunctionID': getAllRolesFunctionID,
-      'getAllGroupsFunctionID': getAllGroupsFunctionID,
-      'getAllPermissionsFunctionID': getAllPermissionsFunctionID,
-      'updateUserInfoFunctionID': updateUserInfoFunctionID,
-      'addNewGroupFunctionID': addNewGroupFunctionID,
-      'updateGroupFunctionID': updateGroupFunctionID,
-      'deleteGroupFunctionID': deleteGroupFunctionID,
-      'supabaseUrl': supabaseUrl,
-      'supabaseAnonKey': supabaseAnonKey,
-      'serversTable': serversTable,
-      'vulnerabilitiesTable': vulnerabilitiesTable,
-      'portsTable': portsTable,
-      'cveTable': cveTable,
-    };
-  }
 
   factory Configs.fromYMLMap(YamlMap map) {
     return Configs(
@@ -381,202 +210,13 @@ class Configs {
       vulnerabilitiesTable: map['vulnerabilitiesTable'] as String,
       portsTable: map['portsTable'] as String,
       cveTable: map['cveTable'] as String,
+      permissionGroupsTable: map['permissionGroupsTable'] as String,
+      permissionsTable: map['permissionsTable'] as String,
+      officesTable: map['officesTable'] as String,
+      departmentsTable: map['departmentsTable'] as String,
+      rolesTable: map['rolesTable'] as String,
+      employeesTable: map['employeesTable'] as String,
     );
   }
-
-  factory Configs.fromMap(Map<String, dynamic> map) {
-    return Configs(
-      host: map['host'] ?? '',
-      login: map['login'] ?? '',
-      password: map['password'] ?? '',
-      port: map['port'] ?? '',
-      basedn: map['basedn'] ?? '',
-      projectId: map['projectId'] ?? '',
-      endpoint: map['endpoint'] ?? '',
-      functionAPIKey: map['functionAPIKey'] ?? '',
-      databaseId: map['databaseId'] ?? '',
-      loggingDatabaseId: map['loggingDatabaseId'] ?? '',
-      appImagesBucketId: map['appImagesBucketId'] ?? '',
-      loginImageId: map['loginImageId'] ?? '',
-      republicLogoFull: map['republicLogoFull'] ?? '',
-      republicLogoSmall: map['republicLogoSmall'] ?? '',
-      serversCollectionId: map['serversCollectionId'] ?? '',
-      checklistCollectionId: map['checklistCollectionId'] ?? '',
-      disksCollectionId: map['disksCollectionId'] ?? '',
-      cpuCollectionId: map['cpuCollectionId'] ?? '',
-      ramCollectionId: map['ramCollectionId'] ?? '',
-      networksCollectionId: map['networksCollectionId'] ?? '',
-      antivirusCollectionId: map['antivirusCollectionId'] ?? '',
-      eventsCollectionId: map['eventsCollectionId'] ?? '',
-      servicesCollectionId: map['servicesCollectionId'] ?? '',
-      errorsCollectionId: map['errorsCollectionId'] ?? '',
-      activeDirectoryGroupsCollectionId: map['activeDirectoryGroupsCollectionId'] ?? '',
-      userInfoCollectionId: map['userInfoCollectionId'] ?? '',
-      groupsCollectionId: map['groupsCollectionId'] ?? '',
-      rolesCollectionId: map['rolesCollectionId'] ?? '',
-      permissionsCollectionId: map['permissionsCollectionId'] ?? '',
-      applicationInfoCollectionId: map['applicationInfoCollectionId'] ?? '',
-      applicationInfoDocId: map['applicationInfoDocId'] ?? '',
-      superAdminUserId: map['superAdminUserId'] ?? '',
-      superAdminUserEmail: map['superAdminUserEmail'] ?? '',
-      superAdminRole: map['superAdminRole'] ?? '',
-      superAdminGroup: map['superAdminGroup'] ?? '',
-      defaultRoleForNewUsers: map['defaultRoleForNewUsers'] ?? '',
-      sendEmailVerificationfunctionId: map['sendEmailVerificationfunctionId'] ?? '',
-      loginFunctionId: map['loginFunctionId'] ?? '',
-      getUserFunctionId: map['getUserFunctionId'] ?? '',
-      getUserEmailFunctionId: map['getUserEmailFunctionId'] ?? '',
-      deleteUserFunctionID: map['deleteUserFunctionID'] ?? '',
-      searchADUserFunctionID: map['searchADUserFunctionID'] ?? '',
-      addNewUserFunctionID: map['addNewUserFunctionID'] ?? '',
-      getAllUsersFunctionID: map['getAllUsersFunctionID'] ?? '',
-      getAllRolesFunctionID: map['getAllRolesFunctionID'] ?? '',
-      getAllGroupsFunctionID: map['getAllGroupsFunctionID'] ?? '',
-      getAllPermissionsFunctionID: map['getAllPermissionsFunctionID'] ?? '',
-      updateUserInfoFunctionID: map['updateUserInfoFunctionID'] ?? '',
-      addNewGroupFunctionID: map['addNewGroupFunctionID'] ?? '',
-      updateGroupFunctionID: map['updateGroupFunctionID'] ?? '',
-      deleteGroupFunctionID: map['deleteGroupFunctionID'] ?? '',
-      supabaseUrl: map['supabaseUrl'] ?? '',
-      supabaseAnonKey: map['supabaseAnonKey'] ?? '',
-      serversTable: map['serversTable'] ?? '',
-      vulnerabilitiesTable: map['vulnerabilitiesTable'] ?? '',
-      portsTable: map['portsTable'] ?? '',
-      cveTable: map['cveTable'] ?? '',
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory Configs.fromJson(String source) => Configs.fromMap(json.decode(source));
-
-  @override
-  String toString() {
-    return 'Configs(host: $host, login: $login, password: $password, port: $port, basedn: $basedn, projectId: $projectId, endpoint: $endpoint, functionAPIKey: $functionAPIKey, databaseId: $databaseId, loggingDatabaseId: $loggingDatabaseId, appImagesBucketId: $appImagesBucketId, loginImageId: $loginImageId, republicLogoFull: $republicLogoFull, republicLogoSmall: $republicLogoSmall, serversCollectionId: $serversCollectionId, checklistCollectionId: $checklistCollectionId, disksCollectionId: $disksCollectionId, cpuCollectionId: $cpuCollectionId, ramCollectionId: $ramCollectionId, networksCollectionId: $networksCollectionId, antivirusCollectionId: $antivirusCollectionId, eventsCollectionId: $eventsCollectionId, servicesCollectionId: $servicesCollectionId, errorsCollectionId: $errorsCollectionId, activeDirectoryGroupsCollectionId: $activeDirectoryGroupsCollectionId, userInfoCollectionId: $userInfoCollectionId, groupsCollectionId: $groupsCollectionId, rolesCollectionId: $rolesCollectionId, permissionsCollectionId: $permissionsCollectionId, applicationInfoCollectionId: $applicationInfoCollectionId, applicationInfoDocId: $applicationInfoDocId, superAdminUserId: $superAdminUserId, superAdminUserEmail: $superAdminUserEmail, superAdminRole: $superAdminRole, superAdminGroup: $superAdminGroup, defaultRoleForNewUsers: $defaultRoleForNewUsers, sendEmailVerificationfunctionId: $sendEmailVerificationfunctionId, loginFunctionId: $loginFunctionId, getUserFunctionId: $getUserFunctionId, getUserEmailFunctionId: $getUserEmailFunctionId, deleteUserFunctionID: $deleteUserFunctionID, searchADUserFunctionID: $searchADUserFunctionID, addNewUserFunctionID: $addNewUserFunctionID, getAllUsersFunctionID: $getAllUsersFunctionID, getAllRolesFunctionID: $getAllRolesFunctionID, getAllGroupsFunctionID: $getAllGroupsFunctionID, getAllPermissionsFunctionID: $getAllPermissionsFunctionID, updateUserInfoFunctionID: $updateUserInfoFunctionID, addNewGroupFunctionID: $addNewGroupFunctionID, updateGroupFunctionID: $updateGroupFunctionID, deleteGroupFunctionID: $deleteGroupFunctionID, supabaseUrl: $supabaseUrl, supabaseAnonKey: $supabaseAnonKey, serversTable: $serversTable, vulnerabilitiesTable: $vulnerabilitiesTable, portsTable: $portsTable, cveTable: $cveTable)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
   
-    return other is Configs &&
-      other.host == host &&
-      other.login == login &&
-      other.password == password &&
-      other.port == port &&
-      other.basedn == basedn &&
-      other.projectId == projectId &&
-      other.endpoint == endpoint &&
-      other.functionAPIKey == functionAPIKey &&
-      other.databaseId == databaseId &&
-      other.loggingDatabaseId == loggingDatabaseId &&
-      other.appImagesBucketId == appImagesBucketId &&
-      other.loginImageId == loginImageId &&
-      other.republicLogoFull == republicLogoFull &&
-      other.republicLogoSmall == republicLogoSmall &&
-      other.serversCollectionId == serversCollectionId &&
-      other.checklistCollectionId == checklistCollectionId &&
-      other.disksCollectionId == disksCollectionId &&
-      other.cpuCollectionId == cpuCollectionId &&
-      other.ramCollectionId == ramCollectionId &&
-      other.networksCollectionId == networksCollectionId &&
-      other.antivirusCollectionId == antivirusCollectionId &&
-      other.eventsCollectionId == eventsCollectionId &&
-      other.servicesCollectionId == servicesCollectionId &&
-      other.errorsCollectionId == errorsCollectionId &&
-      other.activeDirectoryGroupsCollectionId == activeDirectoryGroupsCollectionId &&
-      other.userInfoCollectionId == userInfoCollectionId &&
-      other.groupsCollectionId == groupsCollectionId &&
-      other.rolesCollectionId == rolesCollectionId &&
-      other.permissionsCollectionId == permissionsCollectionId &&
-      other.applicationInfoCollectionId == applicationInfoCollectionId &&
-      other.applicationInfoDocId == applicationInfoDocId &&
-      other.superAdminUserId == superAdminUserId &&
-      other.superAdminUserEmail == superAdminUserEmail &&
-      other.superAdminRole == superAdminRole &&
-      other.superAdminGroup == superAdminGroup &&
-      other.defaultRoleForNewUsers == defaultRoleForNewUsers &&
-      other.sendEmailVerificationfunctionId == sendEmailVerificationfunctionId &&
-      other.loginFunctionId == loginFunctionId &&
-      other.getUserFunctionId == getUserFunctionId &&
-      other.getUserEmailFunctionId == getUserEmailFunctionId &&
-      other.deleteUserFunctionID == deleteUserFunctionID &&
-      other.searchADUserFunctionID == searchADUserFunctionID &&
-      other.addNewUserFunctionID == addNewUserFunctionID &&
-      other.getAllUsersFunctionID == getAllUsersFunctionID &&
-      other.getAllRolesFunctionID == getAllRolesFunctionID &&
-      other.getAllGroupsFunctionID == getAllGroupsFunctionID &&
-      other.getAllPermissionsFunctionID == getAllPermissionsFunctionID &&
-      other.updateUserInfoFunctionID == updateUserInfoFunctionID &&
-      other.addNewGroupFunctionID == addNewGroupFunctionID &&
-      other.updateGroupFunctionID == updateGroupFunctionID &&
-      other.deleteGroupFunctionID == deleteGroupFunctionID &&
-      other.supabaseUrl == supabaseUrl &&
-      other.supabaseAnonKey == supabaseAnonKey &&
-      other.serversTable == serversTable &&
-      other.vulnerabilitiesTable == vulnerabilitiesTable &&
-      other.portsTable == portsTable &&
-      other.cveTable == cveTable;
-  }
-
-  @override
-  int get hashCode {
-    return host.hashCode ^
-      login.hashCode ^
-      password.hashCode ^
-      port.hashCode ^
-      basedn.hashCode ^
-      projectId.hashCode ^
-      endpoint.hashCode ^
-      functionAPIKey.hashCode ^
-      databaseId.hashCode ^
-      loggingDatabaseId.hashCode ^
-      appImagesBucketId.hashCode ^
-      loginImageId.hashCode ^
-      republicLogoFull.hashCode ^
-      republicLogoSmall.hashCode ^
-      serversCollectionId.hashCode ^
-      checklistCollectionId.hashCode ^
-      disksCollectionId.hashCode ^
-      cpuCollectionId.hashCode ^
-      ramCollectionId.hashCode ^
-      networksCollectionId.hashCode ^
-      antivirusCollectionId.hashCode ^
-      eventsCollectionId.hashCode ^
-      servicesCollectionId.hashCode ^
-      errorsCollectionId.hashCode ^
-      activeDirectoryGroupsCollectionId.hashCode ^
-      userInfoCollectionId.hashCode ^
-      groupsCollectionId.hashCode ^
-      rolesCollectionId.hashCode ^
-      permissionsCollectionId.hashCode ^
-      applicationInfoCollectionId.hashCode ^
-      applicationInfoDocId.hashCode ^
-      superAdminUserId.hashCode ^
-      superAdminUserEmail.hashCode ^
-      superAdminRole.hashCode ^
-      superAdminGroup.hashCode ^
-      defaultRoleForNewUsers.hashCode ^
-      sendEmailVerificationfunctionId.hashCode ^
-      loginFunctionId.hashCode ^
-      getUserFunctionId.hashCode ^
-      getUserEmailFunctionId.hashCode ^
-      deleteUserFunctionID.hashCode ^
-      searchADUserFunctionID.hashCode ^
-      addNewUserFunctionID.hashCode ^
-      getAllUsersFunctionID.hashCode ^
-      getAllRolesFunctionID.hashCode ^
-      getAllGroupsFunctionID.hashCode ^
-      getAllPermissionsFunctionID.hashCode ^
-      updateUserInfoFunctionID.hashCode ^
-      addNewGroupFunctionID.hashCode ^
-      updateGroupFunctionID.hashCode ^
-      deleteGroupFunctionID.hashCode ^
-      supabaseUrl.hashCode ^
-      supabaseAnonKey.hashCode ^
-      serversTable.hashCode ^
-      vulnerabilitiesTable.hashCode ^
-      portsTable.hashCode ^
-      cveTable.hashCode;
-  }
 }
