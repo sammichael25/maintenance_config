@@ -68,8 +68,8 @@ class RoleModel extends Equatable {
     return RoleModel(
       id: map['id']?.toInt() ?? 0,
       name: map['name'] ?? '',
-      department: DepartmentModel.fromMap(map['department']),
-      permissions: List<PermissionModel>.from(map['permissions']?.map((x) => PermissionModel.fromMap(x))),
+      department: DepartmentModel.fromDoc(map['department']),
+      permissions: List<PermissionModel>.from(map['permissions']?.map((x) => PermissionModel.fromDoc(x))),
     );
   }
 

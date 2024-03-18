@@ -108,7 +108,7 @@ class SupabaseUserModel extends Equatable {
       title: map['job_title'],
       ipPhone: map['phone_extension'],
       workstationIp: map['workstation_ip'] ?? '',
-      role: RoleModel.fromMap(map['role']),
+      role: RoleModel.fromDoc(map['role']),
     );
   }
 

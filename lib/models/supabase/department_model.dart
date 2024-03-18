@@ -60,7 +60,7 @@ class DepartmentModel extends Equatable {
     return DepartmentModel(
       id: map['id']?.toInt() ?? 0,
       name: map['name'] ?? '',
-      office: OfficeModel.fromMap(map['office']),
+      office: OfficeModel.fromDoc(map['office']),
     );
   }
 
