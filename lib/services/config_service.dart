@@ -32,6 +32,7 @@ class Configs {
   String databaseId;
   String loggingDatabaseId;
   String appImagesBucketId;
+  String penVulScansBucketId;
   String loginImageId;
   String republicLogoFull;
   String republicLogoSmall;
@@ -97,6 +98,7 @@ class Configs {
     required this.databaseId,
     required this.loggingDatabaseId,
     required this.appImagesBucketId,
+    required this.penVulScansBucketId,
     required this.loginImageId,
     required this.republicLogoFull,
     required this.republicLogoSmall,
@@ -164,6 +166,7 @@ class Configs {
       databaseId: map['databaseId'] as String,
       loggingDatabaseId: map['loggingDatabaseId'] as String,
       appImagesBucketId: map['appImagesBucketId'] as String,
+      penVulScansBucketId: map['penVulScansBucketId'] as String,
       loginImageId: map['loginImageId'] as String,
       republicLogoFull: map['republicLogoFull'] as String,
       republicLogoSmall: map['republicLogoSmall'] as String,
