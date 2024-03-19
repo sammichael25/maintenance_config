@@ -86,6 +86,7 @@ class Configs {
   String departmentsTable;
   String rolesTable;
   String employeesTable;
+  String cveSearchUrl;
 
   Configs({
     required this.host,
@@ -153,6 +154,7 @@ class Configs {
     required this.departmentsTable,
     required this.rolesTable,
     required this.employeesTable,
+    required this.cveSearchUrl,
   });
 
   factory Configs.fromYMLMap(YamlMap map) {
@@ -222,6 +224,7 @@ class Configs {
       departmentsTable: map['departmentsTable'] as String,
       rolesTable: map['rolesTable'] as String,
       employeesTable: map['employeesTable'] as String,
+      cveSearchUrl: map['cveSearchUrl'] as String,
     );
   }
   
