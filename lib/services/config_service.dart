@@ -73,6 +73,7 @@ class Configs {
   String addNewGroupFunctionID;
   String updateGroupFunctionID;
   String deleteGroupFunctionID;
+  String vulnerabilityImportFunctionID;
   String supabaseUrl;
   String supabaseAnonKey;
   String serversTable;
@@ -139,6 +140,7 @@ class Configs {
     required this.addNewGroupFunctionID,
     required this.updateGroupFunctionID,
     required this.deleteGroupFunctionID,
+    required this.vulnerabilityImportFunctionID,
     required this.supabaseUrl,
     required this.supabaseAnonKey,
     required this.serversTable,
@@ -207,6 +209,7 @@ class Configs {
       addNewGroupFunctionID: map['addNewGroupFunctionID'] as String,
       updateGroupFunctionID: map['updateGroupFunctionID'] as String,
       deleteGroupFunctionID: map['deleteGroupFunctionID'] as String,
+      vulnerabilityImportFunctionID: map['vulnerabilityImportFunctionID'] as String,
       supabaseUrl: map['supabaseUrl'] as String,
       supabaseAnonKey: map['supabaseAnonKey'] as String,
       serversTable: map['serversTable'] as String,
