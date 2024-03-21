@@ -8,6 +8,7 @@ import 'package:maintenance_config/enums/server_tier.dart';
 import 'package:maintenance_config/enums/server_type.dart';
 import 'package:maintenance_config/enums/system.dart';
 import 'package:maintenance_config/enums/territory.dart';
+import 'package:maintenance_config/enums/vulnerability_status.dart';
 import 'package:maintenance_config/models/application_model.dart';
 import 'package:maintenance_config/models/basic_types.dart';
 import 'package:maintenance_config/models/disk_model.dart';
@@ -719,8 +720,6 @@ String getDatacenter(String serverName) {
     return ServerDataCenter.UNKNOWN.name.toUpperCase();
   }
 }
-
-enum VulnerabilityStatus { open, wip, onHold, closed }
 
 class ServerByVulnerabilityModel extends Equatable {
   final int id;
