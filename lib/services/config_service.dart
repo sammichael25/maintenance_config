@@ -86,6 +86,7 @@ class Configs {
   String departmentsTable;
   String rolesTable;
   String employeesTable;
+  String serversForVulnerabilityView;
   String cveSearchUrl;
 
   Configs({
@@ -154,6 +155,7 @@ class Configs {
     required this.departmentsTable,
     required this.rolesTable,
     required this.employeesTable,
+    required this.serversForVulnerabilityView,
     required this.cveSearchUrl,
   });
 
@@ -224,6 +226,7 @@ class Configs {
       departmentsTable: map['departmentsTable'] as String,
       rolesTable: map['rolesTable'] as String,
       employeesTable: map['employeesTable'] as String,
+      serversForVulnerabilityView: map['serversForVulnerabilityView'] as String,
       cveSearchUrl: map['cveSearchUrl'] as String,
     );
   }

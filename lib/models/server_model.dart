@@ -164,26 +164,26 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
   }
 
   static const WindowsServerModel empty = WindowsServerModel(
-      id: -1,
-      name: '',
-      ip: '',
-      system: System.UNKNOWN,
-      serverClass: ServerClass.UNKNOWN,
-      serverType: ServerType.UNKNOWN,
-      dataCenter: ServerDataCenter.UNKNOWN,
-      os: '',
-      osBuild: '',
-      osVersion: '',
-      motherboardManufacturer: '',
-      motherboardSerial: '',
-      motherboardProductNumber: '',
-      processors: [],
-      memory: [],
-      memoryUsedCapacity: 0.0,
-      memoryMaxAllowedCapacity: 0.0,
-      disks: [],
-      patches: [],
-    );
+    id: -1,
+    name: '',
+    ip: '',
+    system: System.UNKNOWN,
+    serverClass: ServerClass.UNKNOWN,
+    serverType: ServerType.UNKNOWN,
+    dataCenter: ServerDataCenter.UNKNOWN,
+    os: '',
+    osBuild: '',
+    osVersion: '',
+    motherboardManufacturer: '',
+    motherboardSerial: '',
+    motherboardProductNumber: '',
+    processors: [],
+    memory: [],
+    memoryUsedCapacity: 0.0,
+    memoryMaxAllowedCapacity: 0.0,
+    disks: [],
+    patches: [],
+  );
 
   bool get isEmpty => this == WindowsServerModel.empty;
   bool get isNotEmpty => this != WindowsServerModel.empty;
@@ -720,3 +720,90 @@ String getDatacenter(String serverName) {
   }
 }
 
+class ServerByVulnerabilityModel extends Equatable {
+  final int id;
+  final String name;
+  final String ip;
+  final String status;
+  final int vulnerabilityId;
+
+  const ServerByVulnerabilityModel({
+    required this.id,
+    required this.name,
+    required this.ip,
+    required this.status,
+    required this.vulnerabilityId,
+  });
+
+  static const ServerByVulnerabilityModel empty = ServerByVulnerabilityModel(id: -1, name: '', ip: '', status: '', vulnerabilityId: -1);
+
+  bool get isEmpty => this == ServerByVulnerabilityModel.empty;
+
+  bool get isNotEmpty => this != ServerByVulnerabilityModel.empty;
+
+  ServerByVulnerabilityModel copyWith({
+    int? id,
+    String? name,
+    String? ip,
+    String? status,
+    int? vulnerabilityId,
+  }) {
+    return ServerByVulnerabilityModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      ip: ip ?? this.ip,
+      status: status ?? this.status,
+      vulnerabilityId: vulnerabilityId ?? this.vulnerabilityId,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'ip': ip,
+      'status': status,
+      'vulnerabilityId': vulnerabilityId,
+    };
+  }
+
+  factory ServerByVulnerabilityModel.fromMap(Map<String, dynamic> map) {
+    return ServerByVulnerabilityModel(
+      id: map['id']?.toInt() ?? 0,
+      name: map['name'] ?? '',
+      ip: map['ip'] ?? '',
+      status: map['status'] ?? '',
+      vulnerabilityId: map['vulnerabilityId']?.toInt() ?? 0,
+    );
+  }
+
+  factory ServerByVulnerabilityModel.fromDoc(Map<String, dynamic> map) {
+    return ServerByVulnerabilityModel(
+      id: map['id']?.toInt() ?? 0,
+      name: map['name'] ?? '',
+      ip: map['ip'] ?? '',
+      status: map['status'] ?? '',
+      vulnerabilityId: map['vulnerability_id']?.toInt() ?? 0,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory ServerByVulnerabilityModel.fromJson(String source) => ServerByVulnerabilityModel.fromMap(json.decode(source));
+
+  @override
+  String toString() {
+    return 'ServerByVulnerabilityModel(id: $id, name: $name, ip: $ip, status: $status, vulnerabilityId: $vulnerabilityId)';
+  }
+
+  @override
+  List<Object> get props {
+    return [
+      id,
+      name,
+      ip,
+      status,
+      vulnerabilityId,
+    ];
+  }
+}
