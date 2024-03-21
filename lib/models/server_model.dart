@@ -720,22 +720,24 @@ String getDatacenter(String serverName) {
   }
 }
 
+enum VulnerabilityStatus { open, wip, onHold, closed }
+
 class ServerByVulnerabilityModel extends Equatable {
   final int id;
   final String name;
   final String ip;
-  final String status;
+  final VulnerabilityStatus status;
   final int vulnerabilityId;
 
   const ServerByVulnerabilityModel({
     required this.id,
     required this.name,
     required this.ip,
-    required this.status,
+    this.status = VulnerabilityStatus.open,
     required this.vulnerabilityId,
   });
 
-  static const ServerByVulnerabilityModel empty = ServerByVulnerabilityModel(id: -1, name: '', ip: '', status: '', vulnerabilityId: -1);
+  static const ServerByVulnerabilityModel empty = ServerByVulnerabilityModel(id: -1, name: '', ip: '', vulnerabilityId: -1);
 
   bool get isEmpty => this == ServerByVulnerabilityModel.empty;
 
@@ -745,7 +747,7 @@ class ServerByVulnerabilityModel extends Equatable {
     int? id,
     String? name,
     String? ip,
-    String? status,
+    VulnerabilityStatus? status,
     int? vulnerabilityId,
   }) {
     return ServerByVulnerabilityModel(
@@ -762,7 +764,7 @@ class ServerByVulnerabilityModel extends Equatable {
       'id': id,
       'name': name,
       'ip': ip,
-      'status': status,
+      'status': status.name,
       'vulnerabilityId': vulnerabilityId,
     };
   }
@@ -772,7 +774,7 @@ class ServerByVulnerabilityModel extends Equatable {
       id: map['id']?.toInt() ?? 0,
       name: map['name'] ?? '',
       ip: map['ip'] ?? '',
-      status: map['status'] ?? '',
+      status: VulnerabilityStatus.values.firstWhere((e) => e.toString() == 'VulnerabilityStatus.${map['status']}'),
       vulnerabilityId: map['vulnerabilityId']?.toInt() ?? 0,
     );
   }
@@ -782,7 +784,7 @@ class ServerByVulnerabilityModel extends Equatable {
       id: map['id']?.toInt() ?? 0,
       name: map['name'] ?? '',
       ip: map['ip'] ?? '',
-      status: map['status'] ?? '',
+      status: VulnerabilityStatus.values.firstWhere((e) => e.toString() == 'VulnerabilityStatus.${map['status']}'),
       vulnerabilityId: map['vulnerability_id']?.toInt() ?? 0,
     );
   }
