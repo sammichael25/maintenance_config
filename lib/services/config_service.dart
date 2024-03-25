@@ -21,6 +21,7 @@ class ConfigService {
 }
 
 class Configs {
+  String appUpdateFileLocation;
   String host;
   String login;
   String password;
@@ -86,11 +87,13 @@ class Configs {
   String departmentsTable;
   String rolesTable;
   String employeesTable;
+  String systemInfoTable;
   String serversForVulnerabilityView;
   String vulnerabilitiesForServerView;
   String cveSearchUrl;
 
   Configs({
+    required this.appUpdateFileLocation,
     required this.host,
     required this.login,
     required this.password,
@@ -156,6 +159,7 @@ class Configs {
     required this.departmentsTable,
     required this.rolesTable,
     required this.employeesTable,
+    required this.systemInfoTable,
     required this.serversForVulnerabilityView,
     required this.vulnerabilitiesForServerView,
     required this.cveSearchUrl,
@@ -163,6 +167,7 @@ class Configs {
 
   factory Configs.fromYMLMap(YamlMap map) {
     return Configs(
+      appUpdateFileLocation: map['appUpdateFileLocation'] as String,
       host: map['host'] as String,
       login: map['login'] as String,
       password: map['password'] as String,
@@ -228,10 +233,10 @@ class Configs {
       departmentsTable: map['departmentsTable'] as String,
       rolesTable: map['rolesTable'] as String,
       employeesTable: map['employeesTable'] as String,
+      systemInfoTable: map['systemInfoTable'] as String,
       serversForVulnerabilityView: map['serversForVulnerabilityView'] as String,
       vulnerabilitiesForServerView: map['vulnerabilitiesForServerView'] as String,
       cveSearchUrl: map['cveSearchUrl'] as String,
     );
   }
-  
 }
