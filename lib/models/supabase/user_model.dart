@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:maintenance_config/config.dart';
 import 'package:maintenance_config/models/basic_types.dart';
+import 'package:maintenance_config/models/supabase/permission_model.dart';
 
 import 'package:maintenance_config/models/supabase/role_model.dart';
 
@@ -134,5 +136,22 @@ class SupabaseUserModel extends Equatable {
       workstationIp,
       role,
     ];
+  }
+
+  bool isAuthorizedTo(String permission) {
+    if (id == ConfigService.configs.superAdminUserId) {
+      return true;
+    }
+    if (role.permissions.isEmpty) {
+      return false;
+    }
+    for (PermissionModel currPermission in role.permissions) {
+      String formattedPermission = permission.replaceAll(RegExp(r'_'), ' ');
+      if (currPermission.name.toLowerCase() == formattedPermission.toLowerCase() ||
+          currPermission.permissionGroup.name.toLowerCase() == formattedPermission.toLowerCase()) {
+        return true;
+      }
+    }
+    return false;
   }
 }
