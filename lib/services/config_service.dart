@@ -65,7 +65,7 @@ class Configs {
   String getUserEmailFunctionId;
   String deleteUserFunctionID;
   String searchADUserFunctionID;
-  String addNewUserFunctionID;
+  String addNewEmployeeFunctionID;
   String getAllUsersFunctionID;
   String getAllRolesFunctionID;
   String getAllGroupsFunctionID;
@@ -137,7 +137,7 @@ class Configs {
     required this.getUserEmailFunctionId,
     required this.deleteUserFunctionID,
     required this.searchADUserFunctionID,
-    required this.addNewUserFunctionID,
+    required this.addNewEmployeeFunctionID,
     required this.getAllUsersFunctionID,
     required this.getAllRolesFunctionID,
     required this.getAllGroupsFunctionID,
@@ -211,7 +211,7 @@ class Configs {
       getUserEmailFunctionId: map['getUserEmailFunctionId'] as String,
       deleteUserFunctionID: map['deleteUserFunctionID'] as String,
       searchADUserFunctionID: map['searchADUserFunctionID'] as String,
-      addNewUserFunctionID: map['addNewUserFunctionID'] as String,
+      addNewEmployeeFunctionID: map['addNewUserFunctionID'] as String,
       getAllUsersFunctionID: map['getAllUsersFunctionID'] as String,
       getAllRolesFunctionID: map['getAllRolesFunctionID'] as String,
       getAllGroupsFunctionID: map['getAllGroupsFunctionID'] as String,
