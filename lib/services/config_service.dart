@@ -37,23 +37,6 @@ class Configs {
   String loginImageId;
   String republicLogoFull;
   String republicLogoSmall;
-  String serversCollectionId;
-  String checklistCollectionId;
-  String disksCollectionId;
-  String cpuCollectionId;
-  String ramCollectionId;
-  String networksCollectionId;
-  String antivirusCollectionId;
-  String eventsCollectionId;
-  String servicesCollectionId;
-  String errorsCollectionId;
-  String activeDirectoryGroupsCollectionId;
-  String userInfoCollectionId;
-  String groupsCollectionId;
-  String rolesCollectionId;
-  String permissionsCollectionId;
-  String applicationInfoCollectionId;
-  String applicationInfoDocId;
   String superAdminUserId;
   String superAdminUserEmail;
   String superAdminRole;
@@ -63,14 +46,14 @@ class Configs {
   String loginFunctionId;
   String getUserFunctionId;
   String getUserEmailFunctionId;
-  String deleteUserFunctionID;
+  String deleteEmployeeFunctionID;
   String searchADUserFunctionID;
   String addNewEmployeeFunctionID;
   String getAllUsersFunctionID;
   String getAllRolesFunctionID;
   String getAllGroupsFunctionID;
   String getAllPermissionsFunctionID;
-  String updateUserInfoFunctionID;
+  String editEmployeeFunctionID;
   String addNewGroupFunctionID;
   String updateGroupFunctionID;
   String deleteGroupFunctionID;
@@ -109,23 +92,6 @@ class Configs {
     required this.loginImageId,
     required this.republicLogoFull,
     required this.republicLogoSmall,
-    required this.serversCollectionId,
-    required this.checklistCollectionId,
-    required this.disksCollectionId,
-    required this.cpuCollectionId,
-    required this.ramCollectionId,
-    required this.networksCollectionId,
-    required this.antivirusCollectionId,
-    required this.eventsCollectionId,
-    required this.servicesCollectionId,
-    required this.errorsCollectionId,
-    required this.activeDirectoryGroupsCollectionId,
-    required this.userInfoCollectionId,
-    required this.groupsCollectionId,
-    required this.rolesCollectionId,
-    required this.permissionsCollectionId,
-    required this.applicationInfoCollectionId,
-    required this.applicationInfoDocId,
     required this.superAdminUserId,
     required this.superAdminUserEmail,
     required this.superAdminRole,
@@ -135,14 +101,14 @@ class Configs {
     required this.loginFunctionId,
     required this.getUserFunctionId,
     required this.getUserEmailFunctionId,
-    required this.deleteUserFunctionID,
+    required this.deleteEmployeeFunctionID,
     required this.searchADUserFunctionID,
     required this.addNewEmployeeFunctionID,
     required this.getAllUsersFunctionID,
     required this.getAllRolesFunctionID,
     required this.getAllGroupsFunctionID,
     required this.getAllPermissionsFunctionID,
-    required this.updateUserInfoFunctionID,
+    required this.editEmployeeFunctionID,
     required this.addNewGroupFunctionID,
     required this.updateGroupFunctionID,
     required this.deleteGroupFunctionID,
@@ -183,23 +149,6 @@ class Configs {
       loginImageId: map['loginImageId'] as String,
       republicLogoFull: map['republicLogoFull'] as String,
       republicLogoSmall: map['republicLogoSmall'] as String,
-      serversCollectionId: map['serversCollectionId'] as String,
-      checklistCollectionId: map['checklistCollectionId'] as String,
-      disksCollectionId: map['disksCollectionId'] as String,
-      cpuCollectionId: map['cpuCollectionId'] as String,
-      ramCollectionId: map['ramCollectionId'] as String,
-      networksCollectionId: map['networksCollectionId'] as String,
-      antivirusCollectionId: map['antivirusCollectionId'] as String,
-      eventsCollectionId: map['eventsCollectionId'] as String,
-      servicesCollectionId: map['servicesCollectionId'] as String,
-      errorsCollectionId: map['errorsCollectionId'] as String,
-      activeDirectoryGroupsCollectionId: map['activeDirectoryGroupsCollectionId'] as String,
-      userInfoCollectionId: map['userInfoCollectionId'] as String,
-      groupsCollectionId: map['groupsCollectionId'] as String,
-      rolesCollectionId: map['rolesCollectionId'] as String,
-      permissionsCollectionId: map['permissionsCollectionId'] as String,
-      applicationInfoCollectionId: map['applicationInfoCollectionId'] as String,
-      applicationInfoDocId: map['applicationInfoDocId'] as String,
       superAdminUserId: map['superAdminUserId'] as String,
       superAdminUserEmail: map['superAdminUserEmail'] as String,
       superAdminRole: map['superAdminRole'] as String,
@@ -209,14 +158,14 @@ class Configs {
       loginFunctionId: map['loginFunctionId'] as String,
       getUserFunctionId: map['getUserFunctionId'] as String,
       getUserEmailFunctionId: map['getUserEmailFunctionId'] as String,
-      deleteUserFunctionID: map['deleteUserFunctionID'] as String,
+      deleteEmployeeFunctionID: map['deleteUserFunctionID'] as String,
       searchADUserFunctionID: map['searchADUserFunctionID'] as String,
       addNewEmployeeFunctionID: map['addNewUserFunctionID'] as String,
       getAllUsersFunctionID: map['getAllUsersFunctionID'] as String,
       getAllRolesFunctionID: map['getAllRolesFunctionID'] as String,
       getAllGroupsFunctionID: map['getAllGroupsFunctionID'] as String,
       getAllPermissionsFunctionID: map['getAllPermissionsFunctionID'] as String,
-      updateUserInfoFunctionID: map['updateUserInfoFunctionID'] as String,
+      editEmployeeFunctionID: map['updateUserInfoFunctionID'] as String,
       addNewGroupFunctionID: map['addNewGroupFunctionID'] as String,
       updateGroupFunctionID: map['updateGroupFunctionID'] as String,
       deleteGroupFunctionID: map['deleteGroupFunctionID'] as String,
