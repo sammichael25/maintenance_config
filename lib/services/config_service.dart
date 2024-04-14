@@ -38,6 +38,7 @@ class Configs {
   String republicLogoFull;
   String republicLogoSmall;
   String superAdminUserId;
+  String superAdminEmployeeId;
   String superAdminUserEmail;
   String superAdminRole;
   String superAdminGroup;
@@ -93,6 +94,7 @@ class Configs {
     required this.republicLogoFull,
     required this.republicLogoSmall,
     required this.superAdminUserId,
+    required this.superAdminEmployeeId,
     required this.superAdminUserEmail,
     required this.superAdminRole,
     required this.superAdminGroup,
@@ -150,6 +152,7 @@ class Configs {
       republicLogoFull: map['republicLogoFull'] as String,
       republicLogoSmall: map['republicLogoSmall'] as String,
       superAdminUserId: map['superAdminUserId'] as String,
+      superAdminEmployeeId: map['superAdminEmployeeId'] as String,
       superAdminUserEmail: map['superAdminUserEmail'] as String,
       superAdminRole: map['superAdminRole'] as String,
       superAdminGroup: map['superAdminGroup'] as String,
