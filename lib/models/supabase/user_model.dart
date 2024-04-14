@@ -13,6 +13,7 @@ class SupabaseUserModel extends Equatable {
   final String firstName;
   final String lastName;
   final String email;
+  final String userDN;
   final String? title;
   final String? ipPhone;
   final String workstationIp;
@@ -24,13 +25,14 @@ class SupabaseUserModel extends Equatable {
     required this.firstName,
     required this.lastName,
     required this.email,
+    required this.userDN,
     this.title,
     this.ipPhone,
     required this.workstationIp,
     required this.role,
   });
 
-  static const SupabaseUserModel empty = SupabaseUserModel(id: '', employeeId: '', firstName: '', lastName: '', email: '', workstationIp: '', role: RoleModel.empty);
+  static const SupabaseUserModel empty = SupabaseUserModel(id: '', employeeId: '', firstName: '', lastName: '', email: '', userDN: '', workstationIp: '', role: RoleModel.empty);
 
   bool get isEmpty => this == SupabaseUserModel.empty;
 
@@ -42,6 +44,7 @@ class SupabaseUserModel extends Equatable {
     String? firstName,
     String? lastName,
     String? email,
+    String? userDN,
     ValueGetter<String?>? title,
     ValueGetter<String?>? ipPhone,
     String? workstationIp,
@@ -53,6 +56,7 @@ class SupabaseUserModel extends Equatable {
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
       email: email ?? this.email,
+      userDN: userDN ?? this.userDN,
       title: title != null ? title() : this.title,
       ipPhone: ipPhone != null ? ipPhone() : this.ipPhone,
       workstationIp: workstationIp ?? this.workstationIp,
@@ -67,6 +71,7 @@ class SupabaseUserModel extends Equatable {
       'firstName': firstName,
       'lastName': lastName,
       'email': email,
+      'userDN': userDN,
       'title': title,
       'ipPhone': ipPhone,
       'workstationIp': workstationIp,
@@ -81,6 +86,7 @@ class SupabaseUserModel extends Equatable {
       firstName: map['firstName'] ?? '',
       lastName: map['lastName'] ?? '',
       email: map['email'] ?? '',
+      userDN: map['userDN'] ?? '',
       title: map['title'],
       ipPhone: map['ipPhone'],
       workstationIp: map['workstationIp'] ?? '',
@@ -93,6 +99,7 @@ class SupabaseUserModel extends Equatable {
       'employee_id': employeeId,
       'first_name': firstName,
       'last_name': lastName,
+      'user_dn': userDN,
       'job_title': title,
       'phone_extension': ipPhone,
       'workstation_ip': workstationIp,
@@ -107,6 +114,7 @@ class SupabaseUserModel extends Equatable {
       firstName: map['first_name'] ?? '',
       lastName: map['last_name'] ?? '',
       email: map['email'] ?? '',
+      userDN: map['user_dn'] ?? '',
       title: map['job_title'],
       ipPhone: map['phone_extension'],
       workstationIp: map['workstation_ip'] ?? '',
@@ -120,7 +128,7 @@ class SupabaseUserModel extends Equatable {
 
   @override
   String toString() {
-    return '{"id": $id, "employeeId": $employeeId, "firstName": $firstName, "lastName": $lastName, "email": $email, "title": $title, "ipPhone": $ipPhone, "workstationIp": $workstationIp, "role": $role}';
+    return '{"id": $id, "employeeId": $employeeId, "firstName": $firstName, "lastName": $lastName, "email": $email, "userDN": $userDN, "title": $title, "ipPhone": $ipPhone, "workstationIp": $workstationIp, "role": $role}';
   }
 
   @override
@@ -131,6 +139,7 @@ class SupabaseUserModel extends Equatable {
       firstName,
       lastName,
       email,
+      userDN,
       title,
       ipPhone,
       workstationIp,
