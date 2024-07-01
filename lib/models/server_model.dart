@@ -550,6 +550,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       os: map['os'],
       osBuild: map['os_build'],
       osVersion: map['os_version'],
+      domain: map['domain'],
       motherboardManufacturer: map['motherboard_manufacturer'],
       motherboardSerial: map['motherboard_serial'],
       motherboardProductNumber: map['motherboard_product_number'],
