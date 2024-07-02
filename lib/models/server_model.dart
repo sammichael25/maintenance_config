@@ -551,7 +551,7 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       osBuild: map['os_build'],
       osVersion: map['os_version'],
       domain: map['domain'],
-      domainUsers: List<UserCredential>.from(map['domainUsers']?.map((x) => UserCredential.fromDoc(x))),
+      domainUsers: List<UserCredential>.from(map['domain_users']?.map((x) => UserCredential.fromDoc(x))),
       tier: ServerTier.values.firstWhere((e) => e.toString() == 'ServerTier.${map['tier']}'),
       motherboardManufacturer: map['motherboard_manufacturer'],
       motherboardSerial: map['motherboard_serial'],
