@@ -558,11 +558,11 @@ class WindowsServerModel extends ServerModel with EquatableMixin {
       motherboardProductNumber: map['motherboard_product_number'],
       memoryUsedCapacity: map['memory_used_capacity']?.toDouble() ?? 0.0,
       memoryMaxAllowedCapacity: map['memory_max_allowed_capacity']?.toDouble() ?? 0.0,
-      dataCenter: ServerDataCenter.values.firstWhere((e) => e.toString() == 'ServerDataCenter.${getDatacenter(map['data_center'])}'),
-      territory: Territory.values.firstWhere((e) => e.toString() == 'Territory.${getTerritory(map['territory'])}'),
-      system: getSystem(map['system']),
-      serverClass: ServerClass.values.firstWhere((e) => e.toString() == 'ServerClass.${getClass(map['server_class'])}'),
-      serverType: ServerType.values.firstWhere((e) => e.toString() == 'ServerType.${getType(map['server_type'])}'),
+      dataCenter: ServerDataCenter.values.firstWhere((e) => e.toString() == 'ServerDataCenter.${map['data_center']}'),
+      territory: Territory.values.firstWhere((e) => e.toString() == 'Territory.${map['territory']}'),
+      system: System.values.firstWhere((e) => e.toString() == 'System.${map['system']}'),
+      serverClass: ServerClass.values.firstWhere((e) => e.toString() == 'ServerClass.${map['server_class']}'),
+      serverType: ServerType.values.firstWhere((e) => e.toString() == 'ServerType.${map['server_type']}'),
     );
   }
 
