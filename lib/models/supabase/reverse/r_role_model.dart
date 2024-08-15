@@ -52,7 +52,7 @@ class RRoleModel extends Equatable {
     return RRoleModel(
       id: map['id'] ?? '',
       name: map['name'] ?? '',
-      permissions: List<PermissionModel>.from(map['permissions']?.map((x) => PermissionModel.fromMap(x))),
+      permissions: List<PermissionModel>.from(map['permissions']?.map((x) => PermissionModel.fromDoc(x))),
     );
   }
 
