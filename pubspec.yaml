@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   yaml: ^3.1.1
-  dart_appwrite: ^10.0.0
+  dart_appwrite: ^11.0.3
   equatable: ^2.0.5
   intl: ^0.19.0
       
