@@ -69,7 +69,7 @@ class PermissionModel extends Equatable {
       id: map['id']?.toInt() ?? 0,
       name: map['name'] ?? '',
       description: map['description'],
-      permissionGroup: PermissionGroupModel.fromMap(map['permission_group']),
+      permissionGroup: PermissionGroupModel.fromMap(map['permission_groups']),
     );
   }
 
