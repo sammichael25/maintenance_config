@@ -33,5 +33,6 @@ enum ServerType {
   CARDWIZ, //
   CRDWIZ,
   WIZ,
+  HSM,
   UNKNOWN,
 }
