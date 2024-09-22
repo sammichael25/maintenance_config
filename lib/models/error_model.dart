@@ -1,30 +1,35 @@
 import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 import 'package:maintenance_config/models/basic_types.dart';
 
 class BaseErrorModel extends Equatable {
   final String title;
-  final String message;
+  final String displayMessage;
+  final String? errorMessage;
   final String? stacktrace;
 
-  const BaseErrorModel({
+  BaseErrorModel({
     required this.title,
-    required this.message,
+    required this.displayMessage,
+    this.errorMessage,
     this.stacktrace,
   });
 
   @override
-  List<Object?> get props => [title, message, stacktrace];
+  List<Object?> get props => [title, displayMessage, errorMessage, stacktrace];
+
+  
 
   BaseErrorModel copyWith({
     String? title,
-    String? message,
+    String? displayMessage,
+    ValueGetter<String?>? errorMessage,
     ValueGetter<String?>? stacktrace,
   }) {
     return BaseErrorModel(
       title: title ?? this.title,
-      message: message ?? this.message,
+      displayMessage: displayMessage ?? this.displayMessage,
+      errorMessage: errorMessage != null ? errorMessage() : this.errorMessage,
       stacktrace: stacktrace != null ? stacktrace() : this.stacktrace,
     );
   }
@@ -32,7 +37,8 @@ class BaseErrorModel extends Equatable {
   Map<String, dynamic> toMap() {
     return {
       'title': title,
-      'message': message,
+      'displayMessage': displayMessage,
+      'errorMessage': errorMessage,
       'stacktrace': stacktrace,
     };
   }
@@ -40,7 +46,8 @@ class BaseErrorModel extends Equatable {
   factory BaseErrorModel.fromMap(Map<String, dynamic> map) {
     return BaseErrorModel(
       title: map['title'] ?? '',
-      message: map['message'] ?? '',
+      displayMessage: map['displayMessage'] ?? '',
+      errorMessage: map['errorMessage'],
       stacktrace: map['stacktrace'],
     );
   }
@@ -50,5 +57,7 @@ class BaseErrorModel extends Equatable {
   factory BaseErrorModel.fromJson(String source) => BaseErrorModel.fromMap(json.decode(source));
 
   @override
-  String toString() => 'BaseErrorModel(title: $title, message: $message, stacktrace: $stacktrace)';
+  String toString() {
+    return 'BaseErrorModel(title: $title, displayMessage: $displayMessage, errorMessage: $errorMessage, stacktrace: $stacktrace)';
+  }
 }
